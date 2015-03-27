@@ -33,6 +33,7 @@
 		31C8ACD36A134F31A1ECBEC9 /* CDVFileTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6567B93F1F4F97BCC504DF /* CDVFileTransfer.m */; };
 		438C52A3D41649F488C870A4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F73BA9983A584041A50D4D0C /* CoreLocation.framework */; };
 		4CE62EE9A34247D68CF466EE /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDD62BF9C8AF470BB4C96EF2 /* ImageIO.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		501F63B81AC61A8000F1AB78 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 501F63B71AC61A8000F1AB78 /* Images.xcassets */; };
 		51AB438A10E04FC8A84ED1ED /* CDVAssetLibraryFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = A3282D518416459B80795DAE /* CDVAssetLibraryFilesystem.m */; };
 		5860203914DC44AF82D4D212 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08794194B4C04460B5188294 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */; };
@@ -106,6 +107,7 @@
 		30FC414816E50CA1004E6F35 /* icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72@2x.png"; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* BrillaMexico-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BrillaMexico-Prefix.pch"; sourceTree = "<group>"; };
 		4DB1504923B446FB8C87A081 /* MessageUI.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		501F63B71AC61A8000F1AB78 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = BrillaMexico/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		525D50D2CEB24CA98CD699CC /* CDVCookies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVCookies.m; path = com.bez4pieci.cookies/CDVCookies.m; sourceTree = "<group>"; };
 		5325F0DDFDA549709D3BBF70 /* CDVAssetLibraryFilesystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVAssetLibraryFilesystem.h; path = org.apache.cordova.file/CDVAssetLibraryFilesystem.h; sourceTree = "<group>"; };
 		57CE292EBA70448CBB4DDB9D /* CDVJpegHeaderWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVJpegHeaderWriter.h; path = org.apache.cordova.camera/CDVJpegHeaderWriter.h; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				501F63B71AC61A8000F1AB78 /* Images.xcassets */,
 				308D052D1370CCF300D202BF /* icons */,
 				308D05311370CCF300D202BF /* splash */,
 				8D1107310486CEB800E47090 /* BrillaMexico-Info.plist */,
@@ -351,6 +354,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 510;
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = 48RP6R2M7D;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "BrillaMexico" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -405,6 +413,7 @@
 				302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */,
 				7E7966E01810823500FA85AD /* icon-50.png in Resources */,
 				7E7966E31810823500FA85AD /* icon-60@2x.png in Resources */,
+				501F63B81AC61A8000F1AB78 /* Images.xcassets in Resources */,
 				7E7966E61810823500FA85AD /* icon-small.png in Resources */,
 				3088BBBD154F3926009F9C59 /* Default-Landscape@2x~ipad.png in Resources */,
 				3088BBBE154F3926009F9C59 /* Default-Landscape~ipad.png in Resources */,
@@ -481,7 +490,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Felipe Reyna Garcia (ARU87MZ9QB)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Felipe Reyna Garcia (ARU87MZ9QB)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -489,6 +502,7 @@
 				GCC_PREFIX_HEADER = "BrillaMexico/BrillaMexico-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
+				GENERATE_PROFILING_CODE = NO;
 				INFOPLIST_FILE = "BrillaMexico/BrillaMexico-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
@@ -504,7 +518,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = BrillaMexico;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -512,14 +527,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Felipe Reyna Garcia (ARU87MZ9QB)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Felipe Reyna Garcia (ARU87MZ9QB)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BrillaMexico/BrillaMexico-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
+				GENERATE_PROFILING_CODE = NO;
 				INFOPLIST_FILE = "BrillaMexico/BrillaMexico-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-weak_framework",
 					CoreFoundation,
@@ -533,7 +554,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = BrillaMexico;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
