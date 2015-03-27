@@ -45,7 +45,7 @@ var app = {
 			return false;
 		}
 
-			FastClick.attach(document.body);
+			//FastClick.attach(document.body);
 
 			//status login
 			/*openFB.getLoginStatus(function(loginStatus){
@@ -75,7 +75,8 @@ var app = {
 			/********************************************
 				BORRAR ESTO Y HABILITAR LO PRIMERO
 			*********************************************/
-
+			/*loadUser(10152942086269425);
+			getActivity();*/
 			index = '.registro1';
 
 			fbid = $('.drawermenu').data('fbid');

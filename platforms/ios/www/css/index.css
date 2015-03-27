@@ -778,13 +778,10 @@ figure{
 	margin: 0;
 }
 
-/* provacidad */
+/* privacidad */
 .privacidad h1{
 
 }
-
-
-
 
 /* Aquí edita Daniel */
 
@@ -795,7 +792,6 @@ figure{
 	border-bottom: 1px solid #ebebeb;
 	background: #fff;
 }
-
 .tabs li {
 	display: block;
 	width: 33%;
@@ -812,11 +808,11 @@ figure{
 	border: 1px solid rgb(73, 2, 86);
 	border-left: 0;
 }
-.tabs li: first-child a {
+.tabs li.leftab a {
 	border-left: 1px solid rgb(73, 2, 86);
 	border-radius: 5px 0px 0px 5px;
 }
-.tabs li: last-child a {
+.tabs li.rightab a {
 	border-radius: 0px 5px 5px 0px;
 }
 .tabs li a.active {
@@ -851,15 +847,15 @@ figure{
 #listUsersLeaderboard li: active {
 	background: #eee;
 }
-#listUsersLeaderboard li: nth-child(1) {
+#listUsersLeaderboard li.pos1 {
 	background: #11c18d;
 	border-bottom: 0;
 }
-#listUsersLeaderboard li: nth-child(2) {
+#listUsersLeaderboard li.pos2 {
 	background: #129e75;
 	border-bottom: 0;
 }
-#listUsersLeaderboard li: nth-child(3) {
+#listUsersLeaderboard li.pos3 {
 	background: #108965;
 	border-bottom: 0;
 }
@@ -975,24 +971,24 @@ figure{
 }
 
 
-#listUserLeaders li: first-child {
+#listUserLeaders li.pos1 {
 	display: block;
 	width: 160px;
 	margin-bottom: 24px;
 	margin: auto;
 }
-#listUserLeaders li: first-child figure {
+#listUserLeaders li.pos1 figure {
 	width: 72px;
 	height: 72px;
 }
-#listUserLeaders li: first-child p .name {
+#listUserLeaders li.pos1 p .name {
 	font-size: 18px;
 	height: 18px;
 }
-#listUserLeaders li: first-child p .points {
+#listUserLeaders li.pos1 p .points {
 	font-size: 14px;
 }
-#listUserLeaders li: first-child .position {
+#listUserLeaders li.pos1 .position {
 	margin-top: 48px;
 	margin-left: 92px;
 	font-size: 15px;

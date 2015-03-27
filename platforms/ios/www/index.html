@@ -7,8 +7,8 @@
 		<meta name="msapplication-tap-highlight" content="no" />
 		<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
 		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=device-dpi" />
-		<link rel="stylesheet" type="text/css" href="css/index.css" />
 		<link rel="stylesheet" type="text/css" href="css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.0.5/css/swiper.css" />
 		<title>Hello World</title>
 	</head>
@@ -48,7 +48,7 @@
 		</script>
 
 		<script id="listusers" type="text/template">
-			<li class="actionperfil" data-action="perfilde" data-id="{{fbid}}">
+			<li class="actionperfil pos{{index}}" data-action="perfilde" data-id="{{fbid}}">
 				<span class="position">{{index}}</span>
 				<figure class="roundavatar">
 					<img src="http://graph.facebook.com/{{fbid}}/picture">
@@ -144,13 +144,13 @@
 					<ul>
 						<li class="action" data-action="bases">
 							<span>Bases del concurso</span>
-							<i>
+							<i class="right">
 								<img class="right" src="img/ic_info.png">
 							</i>
 						</li>
 						<li class="action" data-action="privacidad">
 							<span>Aviso de privacidad</span>
-							<i>
+							<i class="right">
 								<img class="right" src="img/ic_info.png">
 							</i>
 						</li>
@@ -158,6 +158,9 @@
 					<ul>
 						<li class="action" data-action="salir">
 							<span>Salir</span>
+							<i class="right">
+								<img class="right" src="img/ic_logout.png">
+							</i>
 						</li>
 					</ul>
 				</div>
@@ -284,13 +287,13 @@
 		<section class="actividad" data-body="#490256" data-navbar="si" data-drawer="si">
 			<div class="content">
 				<ul class="tabs">
-					<li>
+					<li class="leftab">
 						<a href="#leaderboard" class="active">Leaderboard</a>
 					</li>
 					<li>
 						<a href="#leaders">10 Mejores</a>
 					</li>
-					<li>
+					<li class="rightab">
 						<a href="#listSelfies">#Selfies</a>
 					</li>
 				</ul>
@@ -824,7 +827,7 @@
 		<script type="text/javascript" src="js/mustache.js"></script>
 		<script type="text/javascript" src="js/mobile.js"></script>
 		<script type="text/javascript" src="js/openfb.js"></script>
-		<script type="text/javascript" src="js/fastclick.js"></script>
+		<!--<script type="text/javascript" src="js/fastclick.js"></script>-->
 		<script type="text/javascript" src="js/index.js"></script>
 	</body>
 </html>
