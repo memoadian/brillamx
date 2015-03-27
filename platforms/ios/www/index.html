@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Brilla México</title>
+		<meta charset="utf-8" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="msapplication-tap-highlight" content="no" />
+		<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=device-dpi" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" href="css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.0.5/css/swiper.css" />
+		<title>Hello World</title>
+	</head>
+	<body>
+
+		<!-- TEMPLATES -->
+		<script id="news" type="text/template">
+			<li>
+				<div class="news-img">
+					<img src="{{imagen}}">
+					<p class="news-title">{{title}}</p>
+				</div>
+				<p class="news-date">{{date}}</p>
+				<div class="news-text">
+					{{content}}
+				</div>
+				<p class="news-share">COMPARTIR</p>
+				<p class="news-view-more action" data-action="noticia" data-id="{{id}}">VER MÁS</p>
+			</li>
+		</script>
+
+		<script id="new" type="text/template">
+			<div class="new-img">
+				<img src="{{imagen}}">
+			</div>
+			<p class="new-date">{{date}}</p>
+			<p class="new-title">{{title}}</p>
+			<div class="new-text">
+				{{{content}}}
+			</div>
+		</script>
+
+		<script id="selfies" type="text/template">
+			<li class="goselfie" data-action="viewselfie" data-picture="{{picture}}" data-userfbid="{{user_id}}" data-username="{{user.name}}" data-desc="{{description}}">
+				<img src="http://api.brillamexico.org/pictures/thumb/{{picture}}">
+			</li>
+		</script>
+
+		<script id="listusers" type="text/template">
+			<li class="actionperfil" data-action="perfilde" data-id="{{fbid}}">
+				<span class="position">{{index}}</span>
+				<figure class="roundavatar">
+					<img src="http://graph.facebook.com/{{fbid}}/picture">
+				</figure>
+				<p>
+					<span class="name-list">{{name}}</span>
+					<span class="points-list">{{points}} puntos</span>
+				</p>
+			</li>
+		</script>
+
+		<script id="perfilde" type="text/template">
+			<li>
+				<p>Fotos</p>
+				<span class="photos">{{photos.length}}</span>
+			</li>
+			<li>
+				<p>Puntos</p>
+				<span class="points">{{points}}</span>
+			</li>
+			<li>
+				<p>Logros</p>
+				<span class="achievement">{{achievement.length}}</span>
+			</li>
+		</script>
+
+		<script id="perfildephotos" type="text/template">
+			<li class="goselfie" data-action="viewselfie" data-picture="{{picture}}" data-userfbid="{{user_id}}" data-username="{{user.name}}" data-desc="{{description}}">
+				<img src="http://api.brillamexico.org/pictures/thumb/{{picture}}">
+			</li>
+		</script>
+		<!--[end]-->
+
+	<div id="fb-root"></div>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '605895716209070',
+          xfbml      : true,
+          version    : 'v2.1'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "http://connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+		<div class="statusbar">
+		
+		</div>
+
+		<div class="navbar">
+			<span class="button-left">
+				<img class="menu" src="img/ic_menu.png">
+			</span>
+			<span class="title"></span>
+			<span class="button-right">
+				<img src="img/actionbar_logo.png">
+			</span>
+		</div>
+
+		<div class="drawermenu" data-fbid="" data-fieldaction="">
+			<div class="drawercontent">
+				<div class="head">
+					<div class="head-perfil">
+						<img class="foto" src="">
+					</div>
+					<p class="data"><span class="name"></span> <span class="points"></span> puntos</p>
+				</div>
+				<div class="container">
+					<ul>
+						<li class="action first" data-action="perfil">
+							<i><img src="img/ic_profile.png"></i>
+							<span>Mi perfil</span>
+						</li>
+						<li class="action" data-action="actividad">
+							<i><img src="img/ic_activity.png"></i>
+							<span>Actividad</span>
+						</li>
+						<li class="action" data-action="noticias">
+							<i><img src="img/ic_news.png"></i>
+							<span>Noticias</span>
+						</li>
+						<li class="action" data-action="emprendedores">
+							<i><img src="img/ic_star.png"></i>
+							<span>Emprendedores</span>
+						</li>
+					</ul>
+					<ul>
+						<li class="action" data-action="bases">
+							<span>Bases del concurso</span>
+							<i>
+								<img class="right" src="img/ic_info.png">
+							</i>
+						</li>
+						<li class="action" data-action="privacidad">
+							<span>Aviso de privacidad</span>
+							<i>
+								<img class="right" src="img/ic_info.png">
+							</i>
+						</li>
+					</ul>
+					<ul>
+						<li class="action" data-action="salir">
+							<span>Salir</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="cortina">
+			
+		</div>
+
+		<!-- REGISTRO 1 -->
+
+		<section class="registro1" data-body="#fafafa" data-navbar="no" data-drawer="no">
+			<div class="content-trans">
+				<img class="logo_login" src="img/logo_login.png">
+				<p>Pequeños retos generan <br> GRANDES cambios</p>
+				<img class="login_ciudad" src="img/login_ciudad.png">
+				<p class="action registrate" data-action="registro2">Registrate para participar</p>
+				<p class="account action" data-action="account-exists">Ya tengo una cuenta</p>
+			</div>
+		</section>
+
+		<!-- REGISTRO 2 -->
+
+		<section class="registro2" data-body="#fff" data-navbar="no" data-drawer="no">
+			<p class="action" data-action="registro1">¿QUÉ ERES?</p>
+			<img class="action-fieldaction" data-fieldaction="1" data-action="registro3" src="img/icono_jovenesadultos.png">
+			<p>Joven/Adulto</p>
+			<img class="action-fieldaction" data-fieldaction="2" data-action="registro3" src="img/icono_emprendedores.png">
+			<p>Emprendedor</p>
+			<img class="action-fieldaction" data-fieldaction="3" data-action="registro3" src="img/icono_empresas.png">
+			<p>Empresa</p>
+		</section>
+
+		<!-- REGISTRO 3 -->
+
+		<section class="registro3" data-body="#9dca30" data-navbar="no" data-drawer="no" data-fieldelected="">
+			<div class="center">
+				<div class="hello">
+					<span>Hola</span>
+					<input type="text" class="username" name="username" placeholder="Escribe tu nombre">
+					<span>!</span>
+				</div>
+				<p class="action-send" data-action="registro4">Continuar</p>
+			</div>
+		</section>
+
+		<!-- REGISTRO 4 -->
+
+		<section class="registro4" data-body="#9dca30" data-navbar="no" data-drawer="no" data-nameelected="">
+			<div class="center">
+				<p class="facebook-login">Hola <span class="un-h"></span>, nos gustaría saber un poco más de ti, conecta tu cuenta de <span class="fb-h">facebook</span> para participar</p>
+				<p class="logIn">Iniciar sesión con Facebook</p>
+			</div>
+		</section>
+
+		<!-- ACCOUNT EXISTS -->
+
+		<section class="account-exists" data-body="#9dca30" data-navbar="no" data-drawer="no">
+			<div class="center">
+				<p class="facebook-login">¡Hola de nuevo!, por favor vuelve a iniciar sesión</p>
+				<p class="logIn">Iniciar sesion con facebook</p>
+			</div>
+		</section>
+
+		<!-- PERFIL -->
+
+		<section class="perfil" data-body="#490256" data-navbar="si" data-drawer="si">
+			<div class="content">
+				<div class="perfil-ciudad">
+					<img class="foto" src="">
+				</div>
+				<p class="perfil-name"></p>
+				<p class="perfil-status">...</p>
+				<div class="perfil-data">
+					<ul>
+						<li>
+							<p>Fotos</p>
+							<span class="photos">0</span>
+						</li>
+						<li>
+							<p>Puntos</p>
+							<span id="points-perfil" class="points">0</span>
+						</li>
+						<li>
+							<p>Logros</p>
+							<span class="achievement">0</span>
+						</li>
+					</ul>
+				</div>
+				<div class="perfil-photos">
+					<ul class="selfies-list">
+					</ul>
+				</div>
+			</div>
+			<p class="button-circle action floated camera-button" data-action="">
+				<img src="img/ic_camera.png">
+			</p>
+		</section>
+
+		<!-- PERFIL DE ??? -->
+
+		<section class="perfilde" data-body="#490256" data-navbar="si" data-drawer="si" data-username="">
+			<div class="content">
+				<div class="perfil-ciudad-de">
+					<img class="foto" src="">
+				</div>
+				<p class="perfil-name-de"></p>
+				<p class="perfil-bio">...</p>
+				<div id="perfil-data">
+					<ul>
+						
+					</ul>
+				</div>
+				<div id="perfil-photos">
+					<ul id="selfies-list">
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<!-- ACTIVIDAD -->
+
+		<section class="actividad" data-body="#490256" data-navbar="si" data-drawer="si">
+			<div class="content">
+				<ul class="tabs">
+					<li>
+						<a href="#leaderboard" class="active">Leaderboard</a>
+					</li>
+					<li>
+						<a href="#leaders">10 Mejores</a>
+					</li>
+					<li>
+						<a href="#listSelfies">#Selfies</a>
+					</li>
+				</ul>
+				<div class="tab" id="leaderboard">
+					<ul id="listUsersLeaderboard"></ul>
+				</div>
+				<div class="tab hide" id="leaders">
+					<ul id="listUserLeaders"></ul>
+				</div>
+				<div class="tab hide" id="listSelfies">
+					<ul id="listSelfies"></ul>
+				</div>
+			</div>
+		</section>
+
+		<!-- NOTICIAS -->
+
+		<section class="noticias" data-body="#490256" data-navbar="si" data-drawer="si">
+			<div class="content">
+				<img class="spin" src="img/spin.png">
+				<ul class="news">
+
+				</ul>
+			</div>
+		</section>
+
+		<!-- NOTICIA -->
+
+		<section class="noticia" data-body="#490256" data-navbar="si" data-drawer="si">
+			<div class="content">
+				<img class="spin" src="img/spin.png">
+				<div class="new">
+
+				</div>
+			</div>
+			<p onclick="window.plugins.socialsharing.share('Message only')" class="button-circle floated">
+				<img src="img/ic_share.png">
+			</p>
+		</section>
+
+		<!-- VER SELFIE -->
+		<section class="viewselfie" data-body="#490256" data-navbar="si" data-drawer="si">
+			<div class="content">
+				<div class="viewselfie-img">
+					<img src="">
+				</div>
+				<div class="viewselfie-data">
+					<img class="viewselfie-profile" src="">
+					<div>
+						<p class="viewselfie-name"></p>
+						<p class="viewselfie-desc"></p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- EMPRENDEDORES -->
+
+		<section class="emprendedores" data-body="#490256" data-navbar="si" data-drawer="si" data-title="Emprendedores">
+			<div class="content">
+				<ul>
+					<li class="action" data-action="emprendedor1">
+						<img src="img/emp_1_mini.png">
+						<p class="emprendedor-name">Jahir Mojica</p>
+						<p class="emprendedor-empresa">SUEMA</p>
+						<p class="emprendedor-desc">Fundador y CEO de Sustentabilidad en Energía y Medio Ambiente S.A.</p>
+						<p class="emprendedor-more">MÁS INFORMACIÓN...</p>
+					</li>
+					<li class="action" data-action="emprendedor2">
+						<img src="img/emp_2_mini.png">
+						<p class="emprendedor-name">Abraham Chetewy</p>
+						<p class="emprendedor-empresa">Somerset Technologies</p>
+						<p class="emprendedor-desc">Tiene especial interés en el desarrollo de tecnologías renovables.</p>
+						<p class="emprendedor-more">MÁS INFORMACIÓN...</p>
+					</li>
+					<li class="action" data-action="emprendedor3">
+						<img src="img/emp_3_mini.png">
+						<p class="emprendedor-name">Francisco X. Villaseñor</p>
+						<p class="emprendedor-empresa">carbón Diversión América Latina</p>
+						<p class="emprendedor-desc">Se ha dedicado al estudio e investigación de biocombustibles.</p>
+						<p class="emprendedor-more">MÁS INFORMACIÓN...</p>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<!-- BASES -->
+
+		<section class="bases" data-body="#490256" data-navbar="si" data-drawer="si">
+			<div class="content">
+				<a href=""></a>
+			</div>
+		</section>
+
+		<!-- PRIVACIDAD -->
+
+		<section class="privacidad" data-body="#490256" data-navbar="si" data-drawer="si">
+			<div class="content">
+				<p style="margin: 20px">El Consejo Nacional de Industriales Ecologistas, A.C. (CONIECO), con domicilio en
+				Gabriel Mancera No. 1141, Colonia Del Valle, Delegación Benito Juárez, C.P. 03100 México,
+				D.F., es responsable de recabar sus datos personales, del uso que se le dé a los mismos y de
+				la protección de los mismos. Su información personal será utilizada para darle a conocer
+				información referente a bienestar social en diversas áreas, como educación, salud, defensa
+				de derechos, ya sean humanos, ambientales u otros, capacitación y desarrollo comunitarios,
+				sólo por mencionar algunos temas resueltos de manera exitosa por la sociedad civil
+				organizada.
+				<br><br>
+				Para mayor información acerca del tratamiento y de los derechos que puede hacer valer, usted
+				puede acceder al aviso de privacidad completo a través de:<br><br>
+				<a href="http://brillamexico.org">http://brillamexico.org</a>
+				<p>
+			</div>
+		</section>
+
+		<!-- SALIR -->
+
+		<section class="salir" data-body="#490256" data-navbar="si" data-drawer="si">
+			<div class="content">
+				<div class="foto-logout">
+					<img class="foto" src="">
+				</div>
+				<p class="name"></p>
+				<p class="logout">
+					¿Estás seguro de que quieres cerrar sesión?<br><br>
+					¡Te vamos a extrañar!
+				</p>
+				<p style="margin:20px auto" class="logOut">Cerrar Sesión</p><br>
+				<p class="destroy">
+					Quiero Eliminar mi cuenta
+				</p>
+			</div>
+		</section>
+
+		<!-- EMPRENDEDOR 1 -->
+
+		<section class="emprendedor1" data-body="#490256" data-navbar="si" data-drawer="si" data-title="Emprendedores">
+			<div class="content">
+				<div class="perfil-emp-img">
+					<p class="perfil-emp-name">Jahir Mojica</p>
+					<p class="perfil-emp-emp">Suema</p>
+				</div>
+				<div class="perfil-emp-bio">
+					<p>Jahir Mojica de 28 años es Ingeniero Industrial por la UNAM y actualmente se encuentra cursando una Maestría en Alta Dirección.</p>
+					[video]
+					<p>Fundador y CEO de Sustentabilidad en Energía y Medio Ambiente S.A. de C.V. (SUEMA), empresa creada para dar una solución a la problemática ambiental y combatir el cambio climático.</p>
+					<p>Se dedica al diseño de sistemas híbridos de bioconversión de residuos en energía, además de ofrecer consultorías para mejorar sistemas existentes y todo tipo de equipos para manejo de desechos urbanos.</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- EMPRENDEDOR 2 -->
+
+		<section class="emprendedor2" data-body="#490256" data-navbar="si" data-drawer="si" data-title="Emprendedores">
+			<div class="content">
+				<div class="perfil-emp-img">
+					<p class="perfil-emp-name">Abraham Chetewy</p>
+					<p class="perfil-emp-emp">Somerset Technologies</p>
+				</div>
+				<div class="perfil-emp-bio">
+					<P>Abraham Chetewy, Licenciado en Administración de Empresas es Socio Fundador y actual Director General de Somerset Technologies S.A. de C.V..</P>
+					[video]
+					<P>Tiene especial interés en el área de energía y medio ambiente, así como en el desarrollo de tecnologías renovables.</P>
+					<P>Ha realizado diversos proyectos relacionados con la eficiencia energética y actualmente contribuye al desarrollo de soluciones de alta ingeniería e innovación tecnológica en la industria de las turbinas eólicas.</P>
+				</div>
+			</div>
+		</section>
+
+		<!-- EMPRENDEDOR 3 -->
+
+		<section class="emprendedor3" data-body="#490256" data-navbar="si" data-drawer="si" data-title="Emprendedores">
+			<div class="content">
+				<div class="perfil-emp-img">
+					<p class="perfil-emp-name">Franciso Xavier Villaseñor</p>
+					<p class="perfil-emp-emp">Carbón Diversión América<br> Latina</p>
+				</div>
+				<div class="perfil-emp-bio">
+					<p>Panchito</p>
+					<p>El Ingeniero Francisco X. Villaseñor se ha dedicado al estudio e investigación de biocombustibles y biomasas en la última década. Es Fundador y Presidente del consejo de administración de las empresas Carbon Diversion América Latina S.A. de C.V.</p>
+					[video]
+					<p>Estudió Ingeniería Civil en la Universidad Autónoma de Guadalajara y actualmente, continua sus estudios cursando la Maestría en Energía Renovable en la misma institución.</p>
+					<p>A la fecha ha desarrollado 4 patentes y solicitado su registro en el IMPI, todas ellas relacionadas con la transformación de materia orgánica en energía renovable.</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- SHARE -->
+
+		<section class="share" data-body="#490256" data-navbar="si" data-drawer="si" data-title="Publica tu #selfie" data-compromiso="">
+			<div class="content">
+				<figure>
+					<img id="largeImage" src="" />
+					<img class="frame" src="img/marcos.png">
+				</figure>
+				<div class="share-data">
+					<p class="pie">Pie de foto</p>
+					<textarea class="share-text" name="textarea" placeholder="Hice un compromiso #MiSelfieBrilla"></textarea>
+					<p class="share-button">
+						COMPARTIR
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!--================================== PRESELFIES =====================================-->
+		<!--================================== PRESELFIES =====================================-->
+		<!--================================== PRESELFIES =====================================-->
+
+		<section class="preselfie-jovenes" data-body="#5b026b" data-navbar="si" data-drawer="no" data-title="Nueva #selfie" data-preselfie="content2">
+			<div class="content2 swiper-container1">
+				<div class='swiper-wrapper'>
+					<div class="swiper-slide eng-1">
+						<p class="preselfie-title">¿Cual es tu compromiso?</p>
+						<img class="preselfie-icon" src="img/ic_compromisos/ic_1_1.png">
+						<p class="preselfie-comp">ME COMPROMETO A</p>
+						<p class="preselfie-desc">
+							preservar el medio ambiente a través del uso eficiente de la energía y así haré brillar a México
+						</p>
+						<p class="button-circle action" data-action="selfie">
+							<img class="camera" src="img/ic_camera.png">
+						</p>
+						<p class="preselfie-fieldaction">JÓVENES Y ADULTOS</p>
+					</div>
+
+					<div class="swiper-slide eng-2">
+						<p class="preselfie-title">¿Cual es tu compromiso?</p>
+						<img class="preselfie-icon" src="img/ic_compromisos/ic_1_2.png">
+						<p class="preselfie-comp">ME COMPROMETO A</p>
+						<p class="preselfie-desc"></p>
+						<p class="button-circle action" data-action="selfie">
+							<img class="camera" src="img/ic_camera.png">
+						</p>
+						<p class="preselfie-fieldaction">JÓVENES Y ADULTOS</p>
+					</div>
+
+					<div class="swiper-slide eng-3">
+						<p class="preselfie-title">¿Cual es tu compromiso?</p>
+						<img class="preselfie-icon" src="img/ic_compromisos/ic_1_3.png">
+						<p class="preselfie-comp">ME COMPROMETO A</p>
+						<p class="preselfie-desc"></p>
+						<p class="button-circle action" data-action="selfie">
+							<img class="camera" src="img/ic_camera.png">
+						</p>
+						<p class="preselfie-fieldaction">JÓVENES Y ADULTOS</p>
+					</div>
+
+					<div class="swiper-slide eng-4">
+						<p class="preselfie-title">¿Cual es tu compromiso?</p>
+						<img class="preselfie-icon" src="img/ic_compromisos/ic_1_4.png">
+						<p class="preselfie-comp">ME COMPROMETO A</p>
+						<p class="preselfie-desc"></p>
+						<p class="button-circle action" data-action="selfie">
+							<img class="camera" src="img/ic_camera.png">
+						</p>
+						<p class="preselfie-fieldaction">JÓVENES Y ADULTOS</p>
+					</div>
+
+					<div class="swiper-slide eng-5">
+						<p class="preselfie-title">¿Cual es tu compromiso?</p>
+						<img class="preselfie-icon" src="img/ic_compromisos/ic_1_5.png">
+						<p class="preselfie-comp">ME COMPROMETO A</p>
+						<p class="preselfie-desc"></p>
+						<p class="button-circle action" data-action="selfie">
+							<img class="camera" src="img/ic_camera.png">
+						</p>
+						<p class="preselfie-fieldaction">JÓVENES Y ADULTOS</p>
+					</div>
+
+					<div class="swiper-slide eng-6">
+						<p class="preselfie-title">¿Cual es tu compromiso?</p>
+						<img class="preselfie-icon" src="img/ic_compromisos/ic_1_6.png">
+						<p class="preselfie-comp">ME COMPROMETO A</p>
+						<p class="preselfie-desc"></p>
+						<p class="button-circle action" data-action="selfie">
+							<img class="camera" src="img/ic_camera.png">
+						</p>
+						<p class="preselfie-fieldaction">JÓVENES Y ADULTOS</p>
+					</div>
+
+					<div class="swiper-slide eng-7">
+						<p class="preselfie-title">¿Cual es tu compromiso?</p>
+						<img class="preselfie-icon" src="img/ic_compromisos/ic_1_7.png">
+						<p class="preselfie-comp">ME COMPROMETO A</p>
+						<p class="preselfie-desc"></p>
+						<p class="button-circle action" data-action="selfie">
+							<img class="camera" src="img/ic_camera.png">
+						</p>
+						<p class="preselfie-fieldaction">JÓVENES Y ADULTOS</p>
+					</div>
+
+					<div class="swiper-slide eng-8">
+						<p class="preselfie-title">¿Cual es tu compromiso?</p>
+						<img class="preselfie-icon" src="img/ic_compromisos/ic_1_8.png">
+						<p class="preselfie-comp">ME COMPROMETO A</p>
+						<p class="preselfie-desc"></p>
+						<p class="button-circle action" data-action="selfie">
+							<img class="camera" src="img/ic_camera.png">
+						</p>
+						<p class="preselfie-fieldaction">JÓVENES Y ADULTOS</p>
+					</div>
+
+					<div class="swiper-slide eng-9">
+						<p class="preselfie-title">¿Cual es tu compromiso?</p>
+						<img class="preselfie-icon" src="img/ic_compromisos/ic_1_9.png">
+						<p class="preselfie-comp">ME COMPROMETO A</p>
+						<p class="preselfie-desc"></p>
+						<p class="button-circle action" data-action="selfie">
+							<img class="camera" src="img/ic_camera.png">
+						</p>
+						<p class="preselfie-fieldaction">JÓVENES Y ADULTOS</p>
+					</div>
+
+					<div class="swiper-slide eng-10">
+						<p class="preselfie-title">¿Cual es tu compromiso?</p>
+						<img class="preselfie-icon" src="img/ic_compromisos/ic_1_10.png">
+						<p class="preselfie-comp">ME COMPROMETO A</p>
+						<p class="preselfie-desc"></p>
+						<p class="button-circle action" data-action="selfie">
+							<img class="camera" src="img/ic_camera.png">
+						</p>
+						<p class="preselfie-fieldaction">JÓVENES Y ADULTOS</p>
+					</div>
+
+					<div class="swiper-slide eng-11">
+						<p class="preselfie-title">¿Cual es tu compromiso?</p>
+						<img class="preselfie-icon" src="img/ic_compromisos/ic_1_11.png">
+						<p class="preselfie-comp">ME COMPROMETO A</p>
+						<p class="preselfie-desc"></p>
+						<p class="button-circle action" data-action="selfie">
+							<img class="camera" src="img/ic_camera.png">
+						</p>
+						<p class="preselfie-fieldaction">JÓVENES Y ADULTOS</p>
+					</div>
+
+					<div class="swiper-slide eng-12">
+						<p class="preselfie-title">¿Cual es tu compromiso?</p>
+						<img class="preselfie-icon" src="img/ic_compromisos/ic_1_12.png">
+						<p class="preselfie-comp">ME COMPROMETO A</p>
+						<p class="preselfie-desc"></p>
+						<p class="button-circle action" data-action="selfie">
+							<img class="camera" src="img/ic_camera.png">
+						</p>
+						<p class="preselfie-fieldaction">JÓVENES Y ADULTOS</p>
+					</div>
+
+					<div class="swiper-slide eng-13">
+						<p class="preselfie-title">¿Cual es tu compromiso?</p>
+						<img class="preselfie-icon" src="img/ic_compromisos/ic_1_13.png">
+						<p class="preselfie-comp">ME COMPROMETO A</p>
+						<p class="preselfie-desc"></p>
+						<p class="button-circle action" data-action="selfie">
+							<img class="camera" src="img/ic_camera.png">
+						</p>
+						<p class="preselfie-fieldaction">JÓVENES Y ADULTOS</p>
+					</div>
+
+					<div class="swiper-slide eng-14">
+						<p class="preselfie-title">¿Cual es tu compromiso?</p>
+						<img class="preselfie-icon" src="img/ic_compromisos/ic_1_14.png">
+						<p class="preselfie-comp">ME COMPROMETO A</p>
+						<p class="preselfie-desc"></p>
+						<p class="button-circle action" data-action="selfie">
+							<img class="camera" src="img/ic_camera.png">
+						</p>
+						<p class="preselfie-fieldaction">JÓVENES Y ADULTOS</p>
+					</div>
+				</div>
+				<div class="swiper-pagination swiper-pagination1"></div>
+			</div>
+		</section>
+
+		<section class="preselfie-emprendedores" data-body="#5b026b" data-navbar="si" data-drawer="no" data-title="Nueva #selfie" data-preselfie="si" data-prev="si" data-next="si">
+			<div class="content2 swiper-container2">
+				<div class='swiper-wrapper'>
+					<div class="swiper-slide eng-15">
+						<p class="preselfie-title">¿Cual es tu compromiso?</p>
+						<img class="preselfie-icon" src="img/ic_compromisos/ic_2_15.png">
+						<p class="preselfie-comp">ME COMPROMETO A</p>
+						<p class="preselfie-desc"></p>
+						<p class="button-circle action" data-action="selfie">
+							<img class="camera" src="img/ic_camera.png">
+						</p>
+						<p class="preselfie-fieldaction">EMPRENDEDORES</p>
+					</div>
+
+					<div class="swiper-slide eng-16">
+						<p class="preselfie-title">¿Cual es tu compromiso?</p>
+						<img class="preselfie-icon" src="img/ic_compromisos/ic_2_16.png">
+						<p class="preselfie-comp">ME COMPROMETO A</p>
+						<p class="preselfie-desc"></p>
+						<p class="button-circle action" data-action="selfie">
+							<img class="camera" src="img/ic_camera.png">
+						</p>
+						<p class="preselfie-fieldaction">EMPRENDEDORES</p>
+					</div>
+
+					<div class="swiper-slide eng-17">
+						<p class="preselfie-title">¿Cual es tu compromiso?</p>
+						<img class="preselfie-icon" src="img/ic_compromisos/ic_2_17.png">
+						<p class="preselfie-comp">ME COMPROMETO A</p>
+						<p class="preselfie-desc"></p>
+						<p class="button-circle action" data-action="selfie">
+							<img class="camera" src="img/ic_camera.png">
+						</p>
+						<p class="preselfie-fieldaction">EMPRENDEDORES</p>
+					</div>
+
+					<div class="swiper-slide eng-18">
+						<p class="preselfie-title">¿Cual es tu compromiso?</p>
+						<img class="preselfie-icon" src="img/ic_compromisos/ic_2_18.png">
+						<p class="preselfie-comp">ME COMPROMETO A</p>
+						<p class="preselfie-desc"></p>
+						<p class="button-circle action" data-action="selfie">
+							<img class="camera" src="img/ic_camera.png">
+						</p>
+						<p class="preselfie-fieldaction">EMPRENDEDORES</p>
+					</div>
+				</div>
+				<div class="swiper-pagination swiper-pagination2"></div>
+			</div>
+		</section>
+
+		<section class="preselfie-empresarios" data-body="#5b026b" data-navbar="si" data-drawer="no" data-title="Nueva #selfie" data-preselfie="si" data-prev="no" data-next="si">
+			<div class="content2 swiper-container3">
+				<div class='swiper-wrapper'>
+					<div class="swiper-slide eng-19">
+						<p class="preselfie-title">¿Cual es tu compromiso?</p>
+						<img class="preselfie-icon" src="img/ic_compromisos/ic_3_19.png">
+						<p class="preselfie-comp">ME COMPROMETO A</p>
+						<p class="preselfie-desc"></p>
+						<p class="button-circle action" data-action="selfie">
+							<img class="camera" src="img/ic_camera.png">
+						</p>
+						<p class="preselfie-fieldaction">EMPRESARIOS</p>
+					</div>
+
+					<div class="swiper-slide eng-20">
+						<p class="preselfie-title">¿Cual es tu compromiso?</p>
+						<img class="preselfie-icon" src="img/ic_compromisos/ic_3_20.png">
+						<p class="preselfie-comp">ME COMPROMETO A</p>
+						<p class="preselfie-desc"></p>
+						<p class="button-circle action" data-action="selfie">
+							<img class="camera" src="img/ic_camera.png">
+						</p>
+						<p class="preselfie-fieldaction">EMPRESARIOS</p>
+					</div>
+
+					<div class="swiper-slide eng-21">
+						<p class="preselfie-title">¿Cual es tu compromiso?</p>
+						<img class="preselfie-icon" src="img/ic_compromisos/ic_3_21.png">
+						<p class="preselfie-comp">ME COMPROMETO A</p>
+						<p class="preselfie-desc"></p>
+						<p class="button-circle action" data-action="selfie">
+							<img class="camera" src="img/ic_camera.png">
+						</p>
+						<p class="preselfie-fieldaction">EMPRESARIOS</p>
+					</div>
+
+					<div class="swiper-slide eng-22">
+						<p class="preselfie-title">¿Cual es tu compromiso?</p>
+						<img class="preselfie-icon" src="img/ic_compromisos/ic_3_22.png">
+						<p class="preselfie-comp">ME COMPROMETO A</p>
+						<p class="preselfie-desc"></p>
+						<p class="button-circle action" data-action="selfie">
+							<img class="camera" src="img/ic_camera.png">
+						</p>
+						<p class="preselfie-fieldaction">EMPRESARIOS</p>
+					</div>
+
+					<div class="swiper-slide eng-23">
+						<p class="preselfie-title">¿Cual es tu compromiso?</p>
+						<img class="preselfie-icon" src="img/ic_compromisos/ic_3_23.png">
+						<p class="preselfie-comp">ME COMPROMETO A</p>
+						<p class="preselfie-desc"></p>
+						<p class="button-circle action" data-action="selfie">
+							<img class="camera" src="img/ic_camera.png">
+						</p>
+						<p class="preselfie-fieldaction">EMPRESARIOS</p>
+					</div>
+
+					<div class="swiper-slide eng-24">
+						<p class="preselfie-title">¿Cual es tu compromiso?</p>
+						<img class="preselfie-icon" src="img/ic_compromisos/ic_3_24.png">
+						<p class="preselfie-comp">ME COMPROMETO A</p>
+						<p class="preselfie-desc"></p>
+						<p class="button-circle action" data-action="selfie">
+							<img class="camera" src="img/ic_camera.png">
+						</p>
+						<p class="preselfie-fieldaction">EMPRESARIOS</p>
+					</div>
+
+					<div class="swiper-slide eng-25">
+						<p class="preselfie-title">¿Cual es tu compromiso?</p>
+						<img class="preselfie-icon" src="img/ic_compromisos/ic_3_25.png">
+						<p class="preselfie-comp">ME COMPROMETO A</p>
+						<p class="preselfie-desc"></p>
+						<p class="button-circle action" data-action="selfie">
+							<img class="camera" src="img/ic_camera.png">
+						</p>
+						<p class="preselfie-fieldaction">EMPRESARIOS</p>
+					</div>
+
+					<div class="swiper-slide eng-26">
+						<p class="preselfie-title">¿Cual es tu compromiso?</p>
+						<img class="preselfie-icon" src="img/ic_compromisos/ic_3_26.png">
+						<p class="preselfie-comp">ME COMPROMETO A</p>
+						<p class="preselfie-desc"></p>
+						<p class="button-circle action" data-action="selfie">
+							<img class="camera" src="img/ic_camera.png">
+						</p>
+						<p class="preselfie-fieldaction">EMPRESARIOS</p>
+					</div>
+
+					<div class="swiper-slide eng-27">
+						<p class="preselfie-title">¿Cual es tu compromiso?</p>
+						<img class="preselfie-icon" src="img/ic_compromisos/ic_3_27.png">
+						<p class="preselfie-comp">ME COMPROMETO A</p>
+						<p class="preselfie-desc"></p>
+						<p class="button-circle action" data-action="selfie">
+							<img class="camera" src="img/ic_camera.png">
+						</p>
+						<p class="preselfie-fieldaction">EMPRESARIOS</p>
+					</div>
+				</div>
+				<div class="swiper-pagination swiper-pagination3"></div>
+			</div>
+		</section>
+
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/swiper.min.js"></script>
+		<script type="text/javascript" src="js/mustache.js"></script>
+		<script type="text/javascript" src="js/mobile.js"></script>
+		<script type="text/javascript" src="js/openfb.js"></script>
+		<script type="text/javascript" src="js/fastclick.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+	</body>
+</html>
