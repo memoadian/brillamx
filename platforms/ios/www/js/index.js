@@ -75,8 +75,11 @@ var app = {
 			/********************************************
 				BORRAR ESTO Y HABILITAR LO PRIMERO
 			*********************************************/
-			/*loadUser(10152942086269425);
-			getActivity();*/
+			$('.drawermenu').data('fieldaction', 1);
+			loadUser(855665064499720);
+			loadDataFacebook(855665064499720, 0, 'prubea', '', 1, 'male', 0);
+			updateCompromisos(855665064499720);
+
 			index = '.registro1';
 
 			fbid = $('.drawermenu').data('fbid');
@@ -203,6 +206,14 @@ var app = {
 				backgroundBody = $('.'+action).data('body');
 				navbarStatus = $('.'+action).data('navbar');
 				title = $('.'+action).data('title');
+				back = $('.'+action).data('back');
+				backtion = $('.'+action).data('backtion');
+
+				if(back == 'true'){
+					$('.back').show().attr('data-action', backtion);
+				}else{
+					$('.back').hide();
+				}
 
 				$('section').hide();
 				$('.'+action).fadeIn();
@@ -300,6 +311,15 @@ var app = {
 					userfbid = $(this).data('userfbid');
 					username = $(this).data('username');
 					description = $(this).data('desc');
+
+					back = $('.'+action).data('back');
+					backtion = $('.'+action).data('backtion');
+
+					if(back == true){
+						$('.back').show().attr('data-action', backtion);
+					}else{
+						$('.back').hide();
+					}
 
 					$('.viewselfie-img img').attr('src', '');
 					$('.viewselfie-profile').attr('src', '');
@@ -497,6 +517,7 @@ var app = {
 						updateCompromisos(fbid);
 					});
 					$('.share-button').text('COMPARTIR');
+					goSelfie();
 				};
 				fail = function(error) {
 					redirectAction('perfil');
@@ -662,7 +683,7 @@ var app = {
 							goSelfie();
 						});
 
-						$('.drawermenu').data('fbid', fbid).data('fieldaction', data.fieldaction_id);
+						$('.drawermenu').attr('data-fbid', fbid).attr('data-fieldaction', data.fieldaction_id);
 
 						if(fieldaction_id == 1){
 							$('.camera-button').attr('data-action', 'preselfie-jovenes');

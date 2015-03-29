@@ -75,6 +75,7 @@ ul{
 	top: 22px;
 	left: 0;
 	display: none;
+	overflow: hidden;
 }
 .title{
 	display: inline-block;
@@ -98,6 +99,9 @@ ul{
 	float: left;
 	margin-left: 20px;
 	margin-top: 	10px; 
+}
+.back{
+	display: none;
 }
 
 /* menu */

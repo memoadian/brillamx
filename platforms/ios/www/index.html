@@ -106,11 +106,13 @@
 
 		<div class="navbar">
 			<span class="button-left">
+				<img class="back" src="img/ic_back.png">
 				<img class="menu" src="img/ic_menu.png">
 			</span>
 			<span class="title"></span>
 			<span class="button-right">
 				<img src="img/actionbar_logo.png">
+				<img src="img/ic_edit.png">
 			</span>
 		</div>
 
@@ -214,6 +216,7 @@
 			<div class="center">
 				<p class="facebook-login">Hola <span class="un-h"></span>, nos gustaría saber un poco más de ti, conecta tu cuenta de <span class="fb-h">facebook</span> para participar</p>
 				<p class="logIn">Iniciar sesión con Facebook</p>
+				<p class="action">Ir a perfil</p>
 			</div>
 		</section>
 
@@ -228,7 +231,7 @@
 
 		<!-- PERFIL -->
 
-		<section class="perfil" data-body="#490256" data-navbar="si" data-drawer="si">
+		<section class="perfil" data-body="#490256" data-navbar="si" data-drawer="si" data-buttonright="edit">
 			<div class="content">
 				<div class="perfil-ciudad">
 					<img class="foto" src="">
@@ -259,6 +262,29 @@
 			<p class="button-circle action floated camera-button" data-action="">
 				<img src="img/ic_camera.png">
 			</p>
+		</section>
+
+		<!-- EDITAR PERFIL -->
+
+		<section class="editar-perfil" data-body="#490256" data-navbar="si" data-drawer="si">
+			<div class="content">
+				<div class="perfil-ciudad">
+					<img class="foto" src="">
+				</div>
+				<div class="perfil-photos">
+					<ul class="selfies-list">
+					</ul>
+				</div>
+				<label>
+					Nombre
+				</label>
+				<input type="text" name="nombre">
+				<label>
+					Biografía
+				</label>
+				<input type="text" name="biografía">
+				<div class="save">Guardar Cambios</div>
+			</div>
 		</section>
 
 		<!-- PERFIL DE ??? -->
@@ -335,7 +361,25 @@
 		</section>
 
 		<!-- VER SELFIE -->
-		<section class="viewselfie" data-body="#490256" data-navbar="si" data-drawer="si">
+
+		<section class="viewselfie" data-body="#490256" data-navbar="si" data-drawer="si" data-back="true" data-backtion="perfil">
+			<div class="content">
+				<div class="viewselfie-img">
+					<img src="">
+				</div>
+				<div class="viewselfie-data">
+					<img class="viewselfie-profile" src="">
+					<div>
+						<p class="viewselfie-name"></p>
+						<p class="viewselfie-desc"></p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- VER SELFIE OTRO -->
+
+		<section class="viewselfie-otro" data-body="#490256" data-navbar="si" data-drawer="si">
 			<div class="content">
 				<div class="viewselfie-img">
 					<img src="">
@@ -495,6 +539,30 @@
 					</p>
 				</div>
 			</div>
+		</section>
+
+		<section class="nuevo-usuario">
+			
+		</section>
+
+		<section class="perfil-completo">
+			
+		</section>
+
+		<section class="don-compromisos">
+			
+		</section>
+
+		<section class="super-comprometido">
+			
+		</section>
+
+		<section class="amante-twitter">
+			
+		</section>
+
+		<section class="viralizador">
+			
 		</section>
 
 		<!--================================== PRESELFIES =====================================-->
