@@ -74,7 +74,7 @@
 		<script id="perfilde" type="text/template">
 			<li class="data-left">
 				<p>Fotos</p>
-				<span class="photos-otro"></span>
+				<span class="photos-otro">0</span>
 			</li>
 			<li>
 				<p>Puntos</p>
@@ -105,6 +105,7 @@
          fjs.parentNode.insertBefore(js, fjs);
        }(document, 'script', 'facebook-jssdk'));
     </script>
+    	<img class="loadCamara" src="img/ic_camera.png">
 		<div class="statusbar">
 		
 		</div>
@@ -116,8 +117,8 @@
 			</span>
 			<span class="title"></span>
 			<span class="button-right">
+				<img class="edit action" data-action="editar-perfil" src="img/ic_edit.png">
 				<img src="img/actionbar_logo.png">
-				<img src="img/ic_edit.png">
 			</span>
 		</div>
 
@@ -239,7 +240,7 @@
 
 		<!-- PERFIL -->
 
-		<section class="perfil" data-body="#490256" data-navbar="si" data-drawer="si" data-buttonright="edit" data-title="Mi Perfil">
+		<section class="perfil" data-body="#490256" data-navbar="si" data-drawer="si" data-buttonright="edit" data-title="Mi Perfil" data-edit="true">
 			<div class="content">
 				<div class="perfil-ciudad">
 					<img class="foto" src="">
@@ -283,21 +284,23 @@
 					<ul class="selfies-list">
 					</ul>
 				</div>
-				<label>
+				<label class="label-name">
 					Nombre
 				</label>
-				<input type="text" name="nombre">
+				<input class="input-edit" type="text" name="nombre">
 				<label>
 					Biografía
 				</label>
-				<input type="text" name="biografía">
-				<div class="save">Guardar Cambios</div>
+				<input class="input-edit" type="text" name="biografía">
+				<div class="save-container">
+					<div class="save">Guardar Cambios</div>
+				</div>
 			</div>
 		</section>
 
 		<!-- PERFIL DE ??? -->
 
-		<section class="perfilde" data-title="Perfil de Usuario" data-body="#490256" data-navbar="si" data-drawer="si" data-username="" data-back="true" data-backtion="actividad">
+		<section class="perfilde" data-title="" data-body="#490256" data-navbar="si" data-drawer="si" data-username="" data-back="true" data-backtion="actividad">
 			<div class="content">
 				<div class="perfil-ciudad-de">
 					<img class="foto" src="">
@@ -322,7 +325,7 @@
 			<div class="content">
 				<ul class="tabs">
 					<li class="leftab">
-						<a href="#leaderboard" class="active">Leaderboard</a>
+						<a href="#leaderboard" class="active">Top Grupo</a>
 					</li>
 					<li>
 						<a href="#leaders">10 Mejores</a>
@@ -351,6 +354,7 @@
 				<ul class="news">
 
 				</ul>
+				<p class="more-news">Más noticias</p>
 			</div>
 		</section>
 
@@ -402,7 +406,7 @@
 			</div>
 		</section>
 
-		<!-- VER SELFIE OTRO -->
+		<!-- VER SELFIE OTRO SINGLE -->
 
 		<section class="viewselfie-otro-single" data-body="#490256" data-navbar="si" data-drawer="si" data-back="true" data-backtion="actividad">
 			<div class="content">
@@ -493,9 +497,25 @@
 					¡Te vamos a extrañar!
 				</p>
 				<p style="margin:20px auto" class="logOut">Cerrar Sesión</p><br>
-				<p class="destroy">
+				<p class="destroy action" data-action="delete">
 					Quiero Eliminar mi cuenta
 				</p>
+			</div>
+		</section>
+
+		<!-- SALIR -->
+
+		<section class="delete" data-title="Salir" data-body="#490256" data-navbar="si" data-drawer="si" data-back="true" data-backtion="salir">
+			<div class="content">
+				<div class="foto-logout">
+					<img class="foto" src="">
+				</div>
+				<p class="name"></p>
+				<p class="delete-warning">
+					Borrar tu cuenta significa perder tus fotos, puntos y logros en el concurso, ¿estás seguro de que deseas eliminar tu cuenta y todos tus datos?
+				</p>
+				<div class="no action" data-action="salir">NO</div>
+				<div class="si action" data-action="registro1">Si, seguro</div>
 			</div>
 		</section>
 

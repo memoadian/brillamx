@@ -16,19 +16,19 @@ img{
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); } }
 .spin {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 32px;
-    height: 32px;
-    margin: -16px 0 0 -16px;
-    -webkit-animation: spin 4s linear infinite;
-    -moz-animation: spin 4s linear infinite;
-    animation: spin 4s linear infinite;
-    z-index: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 32px;
+	height: 32px;
+	margin: -16px 0 0 -16px;
+	-webkit-animation: spin 4s linear infinite;
+	-moz-animation: spin 4s linear infinite;
+	animation: spin 4s linear infinite;
+	z-index: 0;
 }
 .ui-loader {
- 	display: none !important;
+	display: none !important;
 }
 .ui-input-text{
 	display: inline-block;
@@ -83,6 +83,8 @@ ul{
 	color: #fff;
 	margin-top: 15px;
 	margin-left: 20px;
+	max-width: 175px;
+	font-size: 15px;
 }
 .button-right{
 	display: inline-block;
@@ -101,6 +103,15 @@ ul{
 	margin-top: 	10px; 
 }
 .back{
+	display: none;
+}
+.edit{
+	width: 30px;
+	height: 30px;
+	text-align: right;
+	float: right;
+	margin-top: 9px;
+	margin-bottom: 10px;
 	display: none;
 }
 
@@ -469,6 +480,38 @@ section{
 	border-left: 1px solid #5b026b;
 }
 
+/* editar perfil */
+.editar-perfil{
+	text-align: center;
+}
+label{
+	display: inline-block;
+	width: 80%;
+	font-weight: bold;
+	text-align: left;
+	padding: 5px;
+}
+.label-name{
+	margin-top: 60px;
+}
+.input-edit{
+	width: 80%;
+	padding: 5px;
+	border: 0;
+	border-bottom: 1px solid #5b026b;
+	margin-bottom: 20px;
+}
+.save-container{
+	width: 80%;
+	display: inline-block;
+}
+.save{
+	padding: 5px 10px;
+	background: #b8de00;
+	color: #d82088;
+	float: right;
+}
+
 /* emprendedores */
 .emprendedores p{
 	margin: 10px 0 0 0;
@@ -610,7 +653,7 @@ section{
 }
 .logout{
 	background: #5b026b;
-	width: 80%;
+	width: 60%;
 	margin: 0 auto;
 	padding: 20px;
 	color: #fff;
@@ -620,6 +663,34 @@ section{
 	color: #5b026b;
 	border-bottom: 1px solid #000;
 	display: inline-block;
+}
+
+/*delete*/
+.delete{
+	text-align: center;
+}
+.delete-warning{
+	background: #d32393;
+	width: 60%;
+	margin: 0 auto;
+	padding: 20px;
+	color: #fff;
+}
+.no{
+	background: #9dca30;
+	color: #fff;
+	display: inline-block;
+	margin: 20px 10px 0 0;
+	padding: 10px;
+	width: 25%;
+}
+.si{
+	background: red;
+	color: #fff;
+	display: inline-block;
+	margin: 20px 0 0 10px;
+	padding: 10px;
+	width: 25%;
 }
 
 /* PRESELFIES */
@@ -707,6 +778,14 @@ section{
 	margin: 0;
 	padding: 5px 20px 20px;
 }
+.more-news{
+	color: #da008e;
+	background: #b8de00;
+	margin: 10px 0 0 0;
+	padding: 10px;
+	font-weight: bold;
+	text-align: center;
+}
 
 /* new */
 .new-img{
@@ -771,8 +850,22 @@ figure{
 	text-align: center;
 	padding: 10px 5px;
 }
-
+.loadCamara{
+	width: 32px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -16px;
+	margin-left: -16px;
+	display: none;
+	-webkit-animation: spin 4s linear infinite;
+	-moz-animation: spin 4s linear infinite;
+	animation: spin 4s linear infinite;
+}
 /* viewselfie */
+.goselfie img{
+	width: 100%;
+}
 .viewselfie-img{
 	padding: 20px;
 }
@@ -932,6 +1025,7 @@ figure{
 	display: inline-block;
 	overflow: hidden;
 	width: 32%;
+	height: 130px;
 	-webkit-transition: all .2s;
 }
 #listUserLeaders li: active {
@@ -1046,6 +1140,9 @@ figure{
 	width: 100%;
 	height: 100%;
 	display: block;
+}
+video{
+	display: none;
 }
 .video-container {
     position: relative;

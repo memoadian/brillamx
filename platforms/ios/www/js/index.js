@@ -75,11 +75,11 @@ var app = {
 			/********************************************
 				BORRAR ESTO Y HABILITAR LO PRIMERO
 			*********************************************/
-/*			$('.drawermenu').data('fieldaction', 1);
+			$('.drawermenu').data('fieldaction', 1);
 			loadUser(855665064499720);
-			loadDataFacebook(855665064499720, 0, 'prubea', '', 1, 'male', 0);
+			loadDataFacebook(855665064499720, 0, '', '', 1, 'male', 0);
 			updateCompromisos(855665064499720);
-*/
+
 			index = '.registro1';
 
 			fbid = $('.drawermenu').data('fbid');
@@ -115,7 +115,6 @@ var app = {
 			$('.login_ciudad').click(function(){
 				video = document.getElementById('video');
 				video.play();
-				alert();
 			});
 			/********************************************
 				SWIPER SLIDER
@@ -212,6 +211,13 @@ var app = {
 				title = $('.'+action).data('title');
 				back = $('.'+action).data('back');
 				backtion = $('.'+action).attr('data-backtion');
+				edit = $('.'+action).attr('data-edit');
+
+				if(edit == 'true'){
+					$('.edit').show();
+				}else{
+					$('.edit').hide();
+				}
 
 				if(back == true){
 					$('.back').show().attr('data-action', backtion);
@@ -282,8 +288,14 @@ var app = {
 				}
 			});
 
+			$('.si').click(function(){
+				var fbid = $('.drawermenu').attr('data-fbid');
+				deleteUser(fbid);
+			});
+
 			function actionPerfil(){
 				$('.actionperfil').click(function(){
+					$('#selfies-list').empty();
 					userFbid = $(this).data('id');
 					loadUser(userFbid);
 
@@ -291,9 +303,15 @@ var app = {
 					backgroundBody = $('.'+action).data('body');
 					navbarStatus = $('.'+action).data('navbar');
 					title = $('.'+action).data('title');
-
 					back = $('.'+action).data('back');
 					backtion = $('.'+action).attr('data-backtion');
+					edit = $('.'+action).attr('data-edit');
+
+					if(edit == 'true'){
+						$('.edit').show();
+					}else{
+						$('.edit').hide();
+					}
 
 					if(back == true){
 						$('.back').show().attr('data-action', backtion);
@@ -324,9 +342,15 @@ var app = {
 					userfbid = $(this).data('userfbid');
 					username = $(this).data('username');
 					description = $(this).data('desc');
-
 					back = $('.'+action).data('back');
 					backtion = $('.'+action).data('backtion');
+					edit = $('.'+action).attr('data-edit');
+
+					if(edit == 'true'){
+						$('.edit').show();
+					}else{
+						$('.edit').hide();
+					}
 
 					if(back == true){
 						$('.back').show().attr('data-action', backtion);
@@ -360,6 +384,13 @@ var app = {
 				backgroundBody = $('.'+action).data('body');
 				navbarStatus = $('.'+action).data('navbar');
 				title = $('.'+action).data('title');
+				edit = $('.'+action).attr('data-edit');
+
+				if(edit == 'true'){
+					$('.edit').show();
+				}else{
+					$('.edit').hide();
+				}
 
 				$('section').hide();
 				$('.'+action).fadeIn();
@@ -577,6 +608,10 @@ var app = {
 				string = div.attr('class');
 				compromiso = string.match(/\d+/)[0];
 				$('.share').attr('data-compromiso', compromiso);
+				$('.loadCamara').show();
+				setTimeout(function(){
+					$('.loadCamara').hide();
+				}, 10000);
 				takePicture();
 			});
 
@@ -626,6 +661,9 @@ var app = {
 
 			$('.logIn').click(function(){
 				$(this).text('Conectando...');
+				setTimeout(function(){
+					$('.logIn').text('Iniciar Sesión con Facebook');
+				}, 3000);
 				login();
 			});
 
@@ -826,7 +864,6 @@ var app = {
 
 			function loadUser(userFbid){
 				$('#perfil-data ul').empty();
-				$('#selfies-list').empty();
 				
 				$('.perfil-ciudad-de img').attr('src', '');
 				$('.perfil-ciudad-de img').attr('src', 'http://graph.facebook.com/'+userFbid+'/picture?type=large');
@@ -841,8 +878,8 @@ var app = {
 
 				$.getJSON('http://api.brillamexico.org/user/selfies/'+userFbid, function(data) {
 					photos = data.length;
-					$('.photos-otro').text(photos);
-					username = $('.perfil-name-de').text();
+					username = $('.perfilde').attr('data-username');
+					$('#selfies-list').empty();
 					if(photos > 0){
 						$.each(data, function(index, value){
 							var template = $('#perfildephotos').html();
@@ -851,14 +888,56 @@ var app = {
 						});
 						goSelfie();
 					}
+					$('.title').text('Perfil de '+username);
+					tePonesPorQueTePones(photos);
+				});
+			}
+
+			function tePonesPorQueTePones(photos){
+				if( $('.photos-otro').length ){
+					$('.photos-otro').text(photos);
+				}else{
+					setTimeout(function(){
+						tePonesPorQueTePones(photos)
+					}, 500);
+				}
+			}
+
+			function deleteUser(fbid){
+				var Delete = $.ajax({
+					url: 'http://api.brillamexico.org/user/delete/'+fbid,
+					method: 'POST',
+				});
+
+				Delete.done(function( data ){
+					alert(data.status);
 				});
 			}
 
 			/*****************************************
 				NOTICIAS
 			*****************************************/
+			var index = 2;
+			$('.more-news').click(function(){
+				loadNews(index);
+				$(this).text('Cargando...');
+				index++;
+			});
 
-			$.getJSON('http://brillamexico.org/api.php?page=1', function(data) {
+			function loadNews(index){
+				$.getJSON('http://brillamexico.org/api.php', { page: index }, function(data) {
+					if(data && data != ''){
+						$.each(data, function(index, value){
+							var template = $('#news').html();
+							var html = Mustache.to_html(template, value);
+							$('.news').append(html);
+						});
+					}
+					$('.more-news').text('Mas noticias...');
+				});
+			}
+
+			$.getJSON('http://brillamexico.org/api.php', { page: 1 }, function(data) {
 				$.each(data, function(index, value){
 					var template = $('#news').html();
 					var html = Mustache.to_html(template, value);
@@ -866,8 +945,8 @@ var app = {
 				});
 			});
 
-			//dom finish
 
+			//dom finish
 	}
 };
 
