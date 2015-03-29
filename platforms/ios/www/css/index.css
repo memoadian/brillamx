@@ -151,8 +151,9 @@ ul{
 }
 .drawermenu .name{
 	color: #fff;
+	margin-left: 10px;
 }
-.drawermenu .points{
+.drawermenu .points, .drawermenu .puntos{
 	color: #caee06;
 }
 .drawermenu ul{
@@ -389,7 +390,7 @@ section{
 }
 .perfil-ciudad{
 	width: 100%;
-	height: 150px;
+	height: 100px;
 	background: url(../img/ciudad.png) center;
 	background-size: cover;
 	overflow: visible;
@@ -407,7 +408,7 @@ section{
 }
 .perfil-ciudad-de{
 	width: 100%;
-	height: 150px;
+	height: 100px;
 	background: url(../img/paisaje_otroperfil.png) center;
 	background-size: cover;
 	overflow: visible;
@@ -424,11 +425,13 @@ section{
 	margin-left: -48px;
 }
 .perfil-name, .perfil-name-de{
-	margin-top: 70px;
+	margin-top: 60px;
+	margin-bottom: 0;
 }
 .perfil-status, .perfil-bio{
 	color: #aeaeae;
 	font-size: 14px;
+	margin-top: 5px;
 }
 .perfil-data, #perfil-data{
 	border-bottom: 1px solid #ccc;
@@ -458,6 +461,12 @@ section{
 .perfil-photos li img{
 	width: 100%;
 	height: auto;
+}
+.data-left{
+	border-right: 1px solid #5b026b;
+}
+.data-right{
+	border-left: 1px solid #5b026b;
 }
 
 /* emprendedores */
@@ -574,6 +583,13 @@ section{
 	padding: 0 10px 0 30px;
 	color: #b8de00;
 	box-sizing: border-box;
+}
+/*bases*/
+.bases h1{
+	color: #5b026b;
+	padding: 30px 10px 10px 20px;
+	border-bottom: 1px solid #ccc;
+	margin: 0;
 }
 
 /* salir */
@@ -775,7 +791,7 @@ figure{
 }
 .viewselfie-name{
 	vertical-align: top;
-	margin: 10px 0;
+	margin: 5px 0;
 }
 .viewselfie-desc{
 	color: rgb(73, 2, 86);
@@ -958,14 +974,13 @@ figure{
 }
 #listUserLeaders li .position {
 	display: block;
-	background: #d32393;
-	border: 2px solid #fff;
+	background: url(../img/hexagono.png);
+	background-size: cover;
 	color: #fff;
 	font-size: 12px;
 	height: 10px;
 	width: 10px;
 	text-align: center;
-	border-radius: 50%;
 	font-weight: bold;
 	position: absolute;
 	padding: 4px;
@@ -980,6 +995,14 @@ figure{
 	width: 160px;
 	margin-bottom: 24px;
 	margin: auto;
+	position: relative;
+}
+#listUserLeaders li.pos1:after {
+	content: url('../img/laurel.png');
+	position: absolute;
+	top: -9px;
+	left: 50%;
+	margin-left: -65px;
 }
 #listUserLeaders li.pos1 figure {
 	width: 72px;
@@ -1000,7 +1023,13 @@ figure{
 	width: 12px;
 	padding: 6px;
 }
-
+#leaders .name-list{
+	font-size: 12px;
+}
+#leaders .points-list{
+	color: rgb(73, 2, 86);
+	font-size: 12px;
+}
 /* Selfies */
 #listSelfies {
 	text-align: center;
@@ -1016,6 +1045,20 @@ figure{
 	width: 100%;
 	height: 100%;
 	display: block;
+}
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px; height: 0; overflow: hidden;
+}
+.video-container iframe,
+.video-container object,
+.video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 @media(min-width: 375px){
 	.preselfie-icon{

@@ -207,9 +207,9 @@ var app = {
 				navbarStatus = $('.'+action).data('navbar');
 				title = $('.'+action).data('title');
 				back = $('.'+action).data('back');
-				backtion = $('.'+action).data('backtion');
+				backtion = $('.'+action).attr('data-backtion');
 
-				if(back == 'true'){
+				if(back == true){
 					$('.back').show().attr('data-action', backtion);
 				}else{
 					$('.back').hide();
@@ -287,6 +287,15 @@ var app = {
 					backgroundBody = $('.'+action).data('body');
 					navbarStatus = $('.'+action).data('navbar');
 					title = $('.'+action).data('title');
+
+					back = $('.'+action).data('back');
+					backtion = $('.'+action).attr('data-backtion');
+
+					if(back == true){
+						$('.back').show().attr('data-action', backtion);
+					}else{
+						$('.back').hide();
+					}
 
 					$('section').hide();
 					$('.'+action).fadeIn();
@@ -578,7 +587,7 @@ var app = {
 					if (response.status === 'connected') {
 						getInfo();
 					} else {
-						alert('Facebook login failed');
+						navigator.notification.alert('Facebook login fallido', '', 'Alerta', 'ok');
 					}
 				},
 				{scope: 'email, publish_actions, public_profile'});
@@ -607,16 +616,8 @@ var app = {
 					error: errorHandler});
 			}
 
-			function revoke() {
-				openFB.revokePermissions(
-					function() {
-						alert('Permissions revoked');
-					},
-					errorHandler);
-			}
-
 			function errorHandler(error) {
-				alert(error.message);
+				navigator.notification.alert(error.message, '', 'error', 'ok');
 			}
 
 			$('.logIn').click(function(){
@@ -798,7 +799,7 @@ var app = {
 					$.each(json, function(index, value){
 						selfie = value;
 
-						var template = $('#selfies').html();
+						var template = $('#selfie-single').html();
 						Mustache.parse(template);
 						var rendered = Mustache.render(template, selfie);
 						$('#listSelfies').append(rendered);
@@ -834,9 +835,9 @@ var app = {
 					$('.perfilde').attr('data-username', data.name);
 				});
 
-				$('#perfil-photos ul').empty();
 				$.getJSON('http://api.brillamexico.org/user/selfies/'+userFbid, function(data) {
 					photos = data.length;
+					$('.photos-otro').text(photos);
 					username = $('.perfil-name-de').text();
 					if(photos > 0){
 						$.each(data, function(index, value){

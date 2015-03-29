@@ -10,7 +10,6 @@
 		<link rel="stylesheet" type="text/css" href="css/swiper.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/index.css" />
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.0.5/css/swiper.css" />
-		<title>Hello World</title>
 	</head>
 	<body>
 
@@ -47,11 +46,23 @@
 			</li>
 		</script>
 
+		<script id="perfildephotos" type="text/template">
+			<li class="goselfie" data-action="viewselfie-otro" data-picture="{{picture}}" data-userfbid="{{user_id}}" data-username="{{user.name}}" data-desc="{{description}}">
+				<img src="http://api.brillamexico.org/pictures/thumb/{{picture}}">
+			</li>
+		</script>
+
+		<script id="selfie-single" type="text/template">
+			<li class="goselfie" data-action="viewselfie-otro-single" data-picture="{{picture}}" data-userfbid="{{user_id}}" data-username="{{user.name}}" data-desc="{{description}}">
+				<img src="http://api.brillamexico.org/pictures/thumb/{{picture}}">
+			</li>
+		</script>
+
 		<script id="listusers" type="text/template">
 			<li class="actionperfil pos{{index}}" data-action="perfilde" data-id="{{fbid}}">
 				<span class="position">{{index}}</span>
 				<figure class="roundavatar">
-					<img src="http://graph.facebook.com/{{fbid}}/picture">
+					<img src="http://graph.facebook.com/{{fbid}}/picture/?type=large">
 				</figure>
 				<p>
 					<span class="name-list">{{name}}</span>
@@ -63,7 +74,7 @@
 		<script id="perfilde" type="text/template">
 			<li>
 				<p>Fotos</p>
-				<span class="photos">{{photos.length}}</span>
+				<span class="photos-otro"></span>
 			</li>
 			<li>
 				<p>Puntos</p>
@@ -72,12 +83,6 @@
 			<li>
 				<p>Logros</p>
 				<span class="achievement">{{achievement.length}}</span>
-			</li>
-		</script>
-
-		<script id="perfildephotos" type="text/template">
-			<li class="goselfie" data-action="viewselfie" data-picture="{{picture}}" data-userfbid="{{user_id}}" data-username="{{user.name}}" data-desc="{{description}}">
-				<img src="http://api.brillamexico.org/pictures/thumb/{{picture}}">
 			</li>
 		</script>
 		<!--[end]-->
@@ -106,7 +111,7 @@
 
 		<div class="navbar">
 			<span class="button-left">
-				<img class="back" src="img/ic_back.png">
+				<img class="back action" src="img/ic_back.png">
 				<img class="menu" src="img/ic_menu.png">
 			</span>
 			<span class="title"></span>
@@ -122,7 +127,7 @@
 					<div class="head-perfil">
 						<img class="foto" src="">
 					</div>
-					<p class="data"><span class="name"></span> <span class="points"></span> puntos</p>
+					<p class="data"><span class="name"></span> <span class="points"></span> <span class="puntos">puntos</span></p>
 				</div>
 				<div class="container">
 					<ul>
@@ -231,7 +236,7 @@
 
 		<!-- PERFIL -->
 
-		<section class="perfil" data-body="#490256" data-navbar="si" data-drawer="si" data-buttonright="edit">
+		<section class="perfil" data-body="#490256" data-navbar="si" data-drawer="si" data-buttonright="edit" data-title="Mi Perfil">
 			<div class="content">
 				<div class="perfil-ciudad">
 					<img class="foto" src="">
@@ -240,7 +245,7 @@
 				<p class="perfil-status">...</p>
 				<div class="perfil-data">
 					<ul>
-						<li>
+						<li class="data-left">
 							<p>Fotos</p>
 							<span class="photos">0</span>
 						</li>
@@ -248,7 +253,7 @@
 							<p>Puntos</p>
 							<span id="points-perfil" class="points">0</span>
 						</li>
-						<li>
+						<li class="data-right">
 							<p>Logros</p>
 							<span class="achievement">0</span>
 						</li>
@@ -266,7 +271,7 @@
 
 		<!-- EDITAR PERFIL -->
 
-		<section class="editar-perfil" data-body="#490256" data-navbar="si" data-drawer="si">
+		<section class="editar-perfil" data-title="Editar Perfil" data-body="#490256" data-navbar="si" data-drawer="si">
 			<div class="content">
 				<div class="perfil-ciudad">
 					<img class="foto" src="">
@@ -289,7 +294,7 @@
 
 		<!-- PERFIL DE ??? -->
 
-		<section class="perfilde" data-body="#490256" data-navbar="si" data-drawer="si" data-username="">
+		<section class="perfilde" data-title="Perfil de Usuario" data-body="#490256" data-navbar="si" data-drawer="si" data-username="" data-back="true" data-backtion="actividad">
 			<div class="content">
 				<div class="perfil-ciudad-de">
 					<img class="foto" src="">
@@ -310,7 +315,7 @@
 
 		<!-- ACTIVIDAD -->
 
-		<section class="actividad" data-body="#490256" data-navbar="si" data-drawer="si">
+		<section class="actividad" data-title="Actividad" data-body="#490256" data-navbar="si" data-drawer="si">
 			<div class="content">
 				<ul class="tabs">
 					<li class="leftab">
@@ -337,7 +342,7 @@
 
 		<!-- NOTICIAS -->
 
-		<section class="noticias" data-body="#490256" data-navbar="si" data-drawer="si">
+		<section class="noticias" data-title="Noticias" data-body="#490256" data-navbar="si" data-drawer="si">
 			<div class="content">
 				<img class="spin" src="img/spin.png">
 				<ul class="news">
@@ -348,7 +353,7 @@
 
 		<!-- NOTICIA -->
 
-		<section class="noticia" data-body="#490256" data-navbar="si" data-drawer="si">
+		<section class="noticia" data-title="Noticias" data-body="#490256" data-navbar="si" data-drawer="si">
 			<div class="content">
 				<img class="spin" src="img/spin.png">
 				<div class="new">
@@ -362,7 +367,7 @@
 
 		<!-- VER SELFIE -->
 
-		<section class="viewselfie" data-body="#490256" data-navbar="si" data-drawer="si" data-back="true" data-backtion="perfil">
+		<section class="viewselfie" data-title="#Selfie" data-body="#490256" data-navbar="si" data-drawer="si" data-back="true" data-backtion="perfil">
 			<div class="content">
 				<div class="viewselfie-img">
 					<img src="">
@@ -379,7 +384,24 @@
 
 		<!-- VER SELFIE OTRO -->
 
-		<section class="viewselfie-otro" data-body="#490256" data-navbar="si" data-drawer="si">
+		<section class="viewselfie-otro" data-title="#Selfie" data-body="#490256" data-navbar="si" data-drawer="si" data-back="true" data-backtion="perfilde">
+			<div class="content">
+				<div class="viewselfie-img">
+					<img src="">
+				</div>
+				<div class="viewselfie-data">
+					<img class="viewselfie-profile" src="">
+					<div>
+						<p class="viewselfie-name"></p>
+						<p class="viewselfie-desc"></p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- VER SELFIE OTRO -->
+
+		<section class="viewselfie-otro-single" data-body="#490256" data-navbar="si" data-drawer="si" data-back="true" data-backtion="actividad">
 			<div class="content">
 				<div class="viewselfie-img">
 					<img src="">
@@ -426,9 +448,12 @@
 
 		<!-- BASES -->
 
-		<section class="bases" data-body="#490256" data-navbar="si" data-drawer="si">
+		<section class="bases" data-title="Bases del concurso" data-body="#490256" data-navbar="si" data-drawer="si">
 			<div class="content">
-				<a href=""></a>
+				<div class="video-container">
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/t1UPLPS419E" frameborder="0" allowfullscreen></iframe>
+				</div>
+				<h1 class="bases">MI SELFIE BRILLA</h1>
 			</div>
 		</section>
 
