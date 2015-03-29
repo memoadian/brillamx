@@ -75,11 +75,11 @@ var app = {
 			/********************************************
 				BORRAR ESTO Y HABILITAR LO PRIMERO
 			*********************************************/
-			$('.drawermenu').data('fieldaction', 1);
+/*			$('.drawermenu').data('fieldaction', 1);
 			loadUser(855665064499720);
 			loadDataFacebook(855665064499720, 0, 'prubea', '', 1, 'male', 0);
 			updateCompromisos(855665064499720);
-
+*/
 			index = '.registro1';
 
 			fbid = $('.drawermenu').data('fbid');
@@ -112,7 +112,11 @@ var app = {
 
 			$('.drawercontent').height(height);
 
-
+			$('.login_ciudad').click(function(){
+				video = document.getElementById('video');
+				video.play();
+				alert();
+			});
 			/********************************************
 				SWIPER SLIDER
 			*********************************************/

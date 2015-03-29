@@ -72,7 +72,7 @@
 		</script>
 
 		<script id="perfilde" type="text/template">
-			<li>
+			<li class="data-left">
 				<p>Fotos</p>
 				<span class="photos-otro"></span>
 			</li>
@@ -80,7 +80,7 @@
 				<p>Puntos</p>
 				<span class="points">{{points}}</span>
 			</li>
-			<li>
+			<li class="data-right">
 				<p>Logros</p>
 				<span class="achievement">{{achievement.length}}</span>
 			</li>
@@ -187,6 +187,9 @@
 				<img class="login_ciudad" src="img/login_ciudad.png">
 				<p class="action registrate" data-action="registro2">Registrate para participar</p>
 				<p class="account action" data-action="account-exists">Ya tengo una cuenta</p>
+				<video id="video">
+					<source src="video.mp4" type="video/mp4">
+				</video>
 			</div>
 		</section>
 
@@ -459,7 +462,7 @@
 
 		<!-- PRIVACIDAD -->
 
-		<section class="privacidad" data-body="#490256" data-navbar="si" data-drawer="si">
+		<section class="privacidad" data-title="Aviso de privacidad" data-body="#490256" data-navbar="si" data-drawer="si">
 			<div class="content">
 				<p style="margin: 20px">El Consejo Nacional de Industriales Ecologistas, A.C. (CONIECO), con domicilio en
 				Gabriel Mancera No. 1141, Colonia Del Valle, Delegación Benito Juárez, C.P. 03100 México,
@@ -479,7 +482,7 @@
 
 		<!-- SALIR -->
 
-		<section class="salir" data-body="#490256" data-navbar="si" data-drawer="si">
+		<section class="salir" data-title="Salir" data-body="#490256" data-navbar="si" data-drawer="si">
 			<div class="content">
 				<div class="foto-logout">
 					<img class="foto" src="">
@@ -594,7 +597,7 @@
 		<!--================================== PRESELFIES =====================================-->
 		<!--================================== PRESELFIES =====================================-->
 
-		<section class="preselfie-jovenes" data-body="#5b026b" data-navbar="si" data-drawer="no" data-title="Nueva #selfie" data-preselfie="content2">
+		<section class="preselfie-jovenes" data-body="#5b026b" data-navbar="si" data-drawer="no" data-title="Nueva #selfie" data-preselfie="content2" data-back="true" data-backtion="perfil">
 			<div class="content2 swiper-container1">
 				<div class='swiper-wrapper'>
 					<div class="swiper-slide eng-1">
@@ -757,7 +760,7 @@
 			</div>
 		</section>
 
-		<section class="preselfie-emprendedores" data-body="#5b026b" data-navbar="si" data-drawer="no" data-title="Nueva #selfie" data-preselfie="si" data-prev="si" data-next="si">
+		<section class="preselfie-emprendedores" data-body="#5b026b" data-navbar="si" data-drawer="no" data-title="Nueva #selfie" data-preselfie="si" data-back="true" data-backtion="perfil">
 			<div class="content2 swiper-container2">
 				<div class='swiper-wrapper'>
 					<div class="swiper-slide eng-15">
@@ -808,7 +811,7 @@
 			</div>
 		</section>
 
-		<section class="preselfie-empresarios" data-body="#5b026b" data-navbar="si" data-drawer="no" data-title="Nueva #selfie" data-preselfie="si" data-prev="no" data-next="si">
+		<section class="preselfie-empresarios" data-body="#5b026b" data-navbar="si" data-drawer="no" data-title="Nueva #selfie" data-preselfie="si" data-back="true" data-backtion="perfil">
 			<div class="content2 swiper-container3">
 				<div class='swiper-wrapper'>
 					<div class="swiper-slide eng-19">
