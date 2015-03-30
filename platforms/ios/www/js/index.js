@@ -109,7 +109,16 @@ var app = {
 					console.log(result);
 					result.me().done(function(data) {
 						var fbid = $('.drawermenu').attr('data-fbid');
-						addLogroTwitter(fbid);
+						var twit = $.ajax({
+							url: 'http://api.brillamexico.org/user/twitter/'+fbid,
+							method: 'POST',
+							data: {
+								twid: data.id
+							}
+						});
+						twit.done(function(){
+							addLogroTwitter(fbid);
+						});
 					});
 				});
 			}
