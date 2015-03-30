@@ -45,13 +45,29 @@ var app = {
 			return false;
 		}
 
-			//FastClick.attach(document.body);
+			FastClick.attach(document.body);
 
-/*			openFB.getLoginStatus(function(loginStatus){
+			openFB.getLoginStatus(function(loginStatus){
 				if(loginStatus.status === 'unknown'){
-					redirectAction('perfil');
+					index = '.registro1';
+
+					$(index).fadeIn();
+					$(index).css({
+						opacity: 1,
+						zIndex: 0,
+					});
+
+					backgroundBody = $(index).data('body');
+					navbarStatus = $(index).data('navbar');
+
+					$('body').css('background', backgroundBody);
+					if(navbarStatus == 'si'){
+						$('.navbar').css('display','block');
+					}else{
+						$('.navbar').css('display','none');
+					}
 				}else{
-					index = '.preselfie-jovenes';
+					index = '.perfil';
 
 					$(index).fadeIn();
 					$(index).css({
@@ -69,12 +85,7 @@ var app = {
 						$('.navbar').css('display','none');
 					}
 				}
-			});*/
-
-			//$('.drawermenu').data('fieldaction', 1);
-			loadUser(1626542094232048);		
-			loadDataFacebook(1626542094232048);		
-			updateCompromisos(1626542094232048);
+			});
 
 			height = $(window).height();
 
@@ -125,9 +136,13 @@ var app = {
 				});
 
 				compromisos.done(function( data ) {
-					$.each(data, function(index, value){
-						disabledPhoto(value.engagement_id);
-					});
+					if(data.error){
+
+					}else{
+						$.each(data, function(index, value){
+							disabledPhoto(value.engagement_id);
+						});
+					}
 				});
 			}
 
@@ -135,10 +150,11 @@ var app = {
 				$('.eng-'+number).css({
 					background: '#929292',
 				})
-				.find('.button-circle').removeClass('action')
-				.find('img').attr('src', 'img/ic_checked.png');
-			}
+				.find('.button-circle').remove();
 
+				$('.eng-'+number+' .preselfie-desc').after('<p class="button-circle"><img src="img/ic_checked.png"></p>');
+				//.find('img').attr('src', 'img/ic_checked.png');
+			}
 			/********************************************
 				ACTIONS
 			*********************************************/
@@ -697,7 +713,7 @@ var app = {
 							});
 						});
 
-						$('.drawermenu').attr('data-fbid', fbid).attr('data-fieldaction', data.fieldaction_id);
+						$('.drawermenu').data('fbid', fbid).data('fieldaction', data.fieldaction_id);
 
 						if(fieldaction_id == 1){
 							$('.camera-button').attr('data-action', 'preselfie-jovenes');
@@ -743,6 +759,7 @@ var app = {
 						$('.name, .perfil-name').text(data.name);
 						$('.points').text(data.points);
 						$('.achievement').text(achievement);
+						$('.perfil-status').text(data.bio);
 						fieldaction_id = data.fieldaction_id;
 						redirectAction('perfil');
 
@@ -758,6 +775,15 @@ var app = {
 								});
 							}
 							goSelfie();
+						});
+
+						$.getJSON('http://api.brillamexico.org/user/'+fbid, function(data) {
+							$('#logros').empty();
+							$.each(data.achievement, function(index, value){
+								var template = $('#listlogros').html();
+								var html = Mustache.to_html(template, value);
+								$('#logros').append(html);
+							});
 						});
 
 						$('.drawermenu').data('fbid', fbid).data('fieldaction', data.fieldaction_id);
