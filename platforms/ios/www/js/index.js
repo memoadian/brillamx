@@ -47,11 +47,11 @@ var app = {
 
 			//FastClick.attach(document.body);
 
-			openFB.getLoginStatus(function(loginStatus){
+/*			openFB.getLoginStatus(function(loginStatus){
 				if(loginStatus.status === 'unknown'){
-					redirectAction('registro1');
+					redirectAction('perfil');
 				}else{
-					index = '.perfil';
+					index = '.preselfie-jovenes';
 
 					$(index).fadeIn();
 					$(index).css({
@@ -69,7 +69,12 @@ var app = {
 						$('.navbar').css('display','none');
 					}
 				}
-			});
+			});*/
+
+			//$('.drawermenu').data('fieldaction', 1);
+			loadUser(1626542094232048);		
+			loadDataFacebook(1626542094232048);		
+			updateCompromisos(1626542094232048);
 
 			height = $(window).height();
 
@@ -684,6 +689,7 @@ var app = {
 						});
 
 						$.getJSON('http://api.brillamexico.org/user/'+fbid, function(data) {
+							$('#logros').empty();
 							$.each(data.achievement, function(index, value){
 								var template = $('#listlogros').html();
 								var html = Mustache.to_html(template, value);
@@ -859,10 +865,11 @@ var app = {
 				});
 
 				$.getJSON('http://api.brillamexico.org/user/'+userFbid, function(data) {
+					$('#logros-otros').empty();
 					$.each(data.achievement, function(index, value){
 						var template = $('#listlogros').html();
 						var html = Mustache.to_html(template, value);
-						$('#logros').append(html);
+						$('#logros-otros').append(html);
 					});
 				});
 			}
