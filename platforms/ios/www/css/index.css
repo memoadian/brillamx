@@ -479,6 +479,16 @@ section{
 .data-right{
 	border-left: 1px solid #5b026b;
 }
+.logro{
+	width: 25%;
+	padding: 5px;
+	box-sizing: border-box;
+	display: inline-block;
+}
+#logros{
+	margin-bottom: 15px;
+	border-bottom: 1px solid #ccc
+}
 
 /* editar perfil */
 .editar-perfil{

@@ -75,10 +75,10 @@ var app = {
 			/********************************************
 				BORRAR ESTO Y HABILITAR LO PRIMERO
 			*********************************************/
-			$('.drawermenu').data('fieldaction', 1);
-			loadUser(855665064499720);
-			loadDataFacebook(855665064499720, 0, '', '', 1, 'male', 0);
-			updateCompromisos(855665064499720);
+/*			$('.drawermenu').data('fieldaction', 1);
+			loadUser(16265420942320483);
+			loadDataFacebook(16265420942320483);
+			updateCompromisos(16265420942320483);*/
 
 			index = '.registro1';
 
@@ -648,7 +648,7 @@ var app = {
 							registerFacebook(data.id, 0, name, data.email, fieldaction_id, data.gender, 0);
 							updateCompromisos(data.id);
 						}else{
-							loadDataFacebook(data.id, 0, data.name, data.email, $('drawermenu').data('fieldaction'), data.gender, 0);
+							loadDataFacebook(data.id);
 							updateCompromisos(data.id);
 						}
 					},
@@ -679,36 +679,25 @@ var app = {
 				TEMPLATES
 			*********************************************/
 
-			function loadDataFacebook(fbid, twid, name, email, fieldaction_id, gender, age){
-				var register = $.ajax({
-					url: 'http://api.brillamexico.org/user/register',
-					method: 'POST',
-					data:{
-						fbid: fbid,
-						twid: twid,
-						name: name,
-						email: email,
-						fieldaction_id: fieldaction_id,
-						gender: gender,
-						age: age
-					}
+			function loadDataFacebook(fbid){
+				var load = $.ajax({
+					url: 'http://api.brillamexico.org/user/'+fbid,
+					method: 'GET',
+					dataType: 'json'
 				});
 
-				register.done(function( data ){
-					foto = 'http://graph.facebook.com/'+fbid+'/picture?type=large';
-					$('.foto').attr('src', foto);
+				load.done(function( data ){
+					if(data.error){
+						navigator.notification.alert('Esta cuenta no existe', null, "Alerta", "Cerrar");
+					}else{
+						foto = 'http://graph.facebook.com/'+fbid+'/picture?type=large';
+						$('.foto').attr('src', foto);
 
-					var request = $.ajax({
-						url: 'http://api.brillamexico.org/user/'+fbid,
-						method: 'GET',
-						dataType: 'json'
-					});
-
-					request.done(function( data ) {
 						achievement = data.achievement.length;
 						$('.name, .perfil-name').text(data.name);
 						$('.points').text(data.points);
 						$('.achievement').text(achievement);
+						$('.perfil-status').text(data.bio);
 						fieldaction_id = data.fieldaction_id;
 						redirectAction('perfil');
 
@@ -726,6 +715,14 @@ var app = {
 							goSelfie();
 						});
 
+						$.getJSON('http://api.brillamexico.org/user/'+fbid, function(data) {
+							$.each(data.achievement, function(index, value){
+								var template = $('#listlogros').html();
+								var html = Mustache.to_html(template, value);
+								$('#logros').append(html);
+							});
+						});
+
 						$('.drawermenu').attr('data-fbid', fbid).attr('data-fieldaction', data.fieldaction_id);
 
 						if(fieldaction_id == 1){
@@ -737,7 +734,7 @@ var app = {
 						}
 
 						getActivity();
-					});
+					}
 				});
 			}
 
@@ -874,6 +871,7 @@ var app = {
 					$('#perfil-data ul').html(html);
 					$('.perfil-name-de').text(data.name);
 					$('.perfilde').attr('data-username', data.name);
+					$('.perfil-bio').text(data.bio);
 				});
 
 				$.getJSON('http://api.brillamexico.org/user/selfies/'+userFbid, function(data) {

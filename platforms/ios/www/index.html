@@ -40,24 +40,28 @@
 			</div>
 		</script>
 
+		<!--llenado selfies de usuario-->
 		<script id="selfies" type="text/template">
 			<li class="goselfie" data-action="viewselfie" data-picture="{{picture}}" data-userfbid="{{user_id}}" data-username="{{user.name}}" data-desc="{{description}}">
 				<img src="http://api.brillamexico.org/pictures/thumb/{{picture}}">
 			</li>
 		</script>
 
+		<!--llenado selfies de otros-->
 		<script id="perfildephotos" type="text/template">
 			<li class="goselfie" data-action="viewselfie-otro" data-picture="{{picture}}" data-userfbid="{{user_id}}" data-username="{{user.name}}" data-desc="{{description}}">
 				<img src="http://api.brillamexico.org/pictures/thumb/{{picture}}">
 			</li>
 		</script>
 
+		<!--llenado perfil de otros-->
 		<script id="selfie-single" type="text/template">
 			<li class="goselfie" data-action="viewselfie-otro-single" data-picture="{{picture}}" data-userfbid="{{user_id}}" data-username="{{user.name}}" data-desc="{{description}}">
 				<img src="http://api.brillamexico.org/pictures/thumb/{{picture}}">
 			</li>
 		</script>
 
+		<!--llenado lista top grupo-->
 		<script id="listusers" type="text/template">
 			<li class="actionperfil pos{{index}}" data-action="perfilde" data-id="{{fbid}}">
 				<span class="position">{{index}}</span>
@@ -71,6 +75,7 @@
 			</li>
 		</script>
 
+		<!--llenado datos perfil de otro usuario-->
 		<script id="perfilde" type="text/template">
 			<li class="data-left">
 				<p>Fotos</p>
@@ -85,6 +90,14 @@
 				<span class="achievement">{{achievement.length}}</span>
 			</li>
 		</script>
+
+		<!--llenado logros usuario y otro-->
+		<script id="listlogros" type="text/template">
+			<li class="logro">
+				<img src="img/{{id_string}}.png">
+			</li>
+		</script>
+
 		<!--[end]-->
 
 	<div id="fb-root"></div>
@@ -261,6 +274,11 @@
 							<p>Logros</p>
 							<span class="achievement">0</span>
 						</li>
+					</ul>
+				</div>
+				<div class="perfil-logros">
+					<ul id="logros">
+						
 					</ul>
 				</div>
 				<div class="perfil-photos">
