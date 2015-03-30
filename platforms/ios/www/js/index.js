@@ -47,8 +47,7 @@ var app = {
 
 			//FastClick.attach(document.body);
 
-			//status login
-			/*openFB.getLoginStatus(function(loginStatus){
+			openFB.getLoginStatus(function(loginStatus){
 				if(loginStatus.status === 'unknown'){
 					redirectAction('registro1');
 				}else{
@@ -70,40 +69,7 @@ var app = {
 						$('.navbar').css('display','none');
 					}
 				}
-			});*/
-
-			/********************************************
-				BORRAR ESTO Y HABILITAR LO PRIMERO
-			*********************************************/
-/*			$('.drawermenu').data('fieldaction', 1);
-			loadUser(16265420942320483);
-			loadDataFacebook(16265420942320483);
-			updateCompromisos(16265420942320483);*/
-
-			index = '.registro1';
-
-			fbid = $('.drawermenu').data('fbid');
-			fieldaction_id = $('.drawermenu').data('fieldaction_id');
-
-			$(index).fadeIn();
-			$(index).css({
-				opacity: 1,
-				zIndex: 0,
 			});
-
-			backgroundBody = $(index).data('body');
-			navbarStatus = $(index).data('navbar');
-
-			$('body').css('background', backgroundBody);
-			if(navbarStatus == 'si'){
-				$('.navbar').css('display','block');
-			}else{
-				$('.navbar').css('display','none');
-			}
-
-			/********************************************
-				BORRAR ESTO Y HABILITAR LO PRIMERO
-			*********************************************/
 
 			height = $(window).height();
 
@@ -558,10 +524,10 @@ var app = {
 								$('.selfies-list').append(html);
 							});
 						}
-						updateCompromisos(fbid);
+						goSelfie();
 					});
+					updateCompromisos(fbid);
 					$('.share-button').text('COMPARTIR');
-					goSelfie();
 				};
 				fail = function(error) {
 					redirectAction('perfil');
@@ -688,7 +654,9 @@ var app = {
 
 				load.done(function( data ){
 					if(data.error){
-						navigator.notification.alert('Esta cuenta no existe', null, "Alerta", "Cerrar");
+						//navigator.notification.alert('Esta cuenta no existe', null, "Alerta", "Cerrar");
+						alert('Esta cuenta no existe');
+						redirectAction('registro1');
 					}else{
 						foto = 'http://graph.facebook.com/'+fbid+'/picture?type=large';
 						$('.foto').attr('src', foto);
@@ -888,6 +856,14 @@ var app = {
 					}
 					$('.title').text('Perfil de '+username);
 					tePonesPorQueTePones(photos);
+				});
+
+				$.getJSON('http://api.brillamexico.org/user/'+userFbid, function(data) {
+					$.each(data.achievement, function(index, value){
+						var template = $('#listlogros').html();
+						var html = Mustache.to_html(template, value);
+						$('#logros').append(html);
+					});
 				});
 			}
 
