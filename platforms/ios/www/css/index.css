@@ -64,10 +64,12 @@ ul{
 .statusbar{
 	height: 22px;
 	width: 100%;
+	background: rgba(0,0,0,0.1);
 }
 
 /* navbar */
 .navbar{
+	background: rgba(0,0,0,0.1);
 	height: 50px;
 	width: 100%;
 	position: fixed;
@@ -391,6 +393,14 @@ section{
 .un-h{
 	color: #000;
 }
+.btn.twitter {
+	display: block;
+	margin: 16px;
+	padding: 8px;
+	background: #55ACEE;
+	color: #fff;
+	text-align: center;
+}
 
 /* perfil */
 .perfil{
@@ -489,6 +499,49 @@ section{
 	margin-bottom: 15px;
 	border-bottom: 1px solid #ccc
 }
+.logro-section{
+	background: #e52d72;
+	text-align: center;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: -200;
+}
+.verde{
+	background: #b8de00;
+}
+.logro-section p{
+	display: inline-block;
+	margin-top: 0;
+}
+.texto-logro{
+	background: #fff;
+	width: 60%;
+	margin: 0 auto;
+	padding: 20px;
+	box-shadow: 1px 1px 1px 1px #444;
+	margin-bottom: 30px;
+	font-weight: bold;
+}
+.ganancia{
+	color: #b8de00;
+	font-size: 35px;
+}
+.rosa{
+	color: #e52d72;
+}
+.img-logro{
+	width: 40%;
+	margin: 0 auto;
+	margin-top: 40px;
+	display: block;
+}
+.genial{
+	color: #5b026b;
+	font-size: 30px;
+	font-weight: bold;
+}
+
 
 /* editar perfil */
 .editar-perfil{

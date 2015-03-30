@@ -208,6 +208,13 @@ module.exports = [
         "clobbers": [
             "window.plugins.socialsharing"
         ]
+    },
+    {
+        "file": "plugins/com.oauthio.plugins.oauthio/www/dist/oauth.js",
+        "id": "com.oauthio.plugins.oauthio.OAuth",
+        "merges": [
+            "OAuth"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -218,7 +225,8 @@ module.exports.metadata =
     "org.apache.cordova.file-transfer": "0.5.0",
     "org.apache.cordova.inappbrowser": "0.6.0",
     "com.bez4pieci.cookies": "0.0.1",
-    "nl.x-services.plugins.socialsharing": "4.3.15"
+    "nl.x-services.plugins.socialsharing": "4.3.15",
+    "com.oauthio.plugins.oauthio": "0.2.4"
 }
 // BOTTOM OF METADATA
 });

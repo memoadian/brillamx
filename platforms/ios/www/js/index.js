@@ -87,6 +87,33 @@ var app = {
 				}
 			});
 
+			// Configs twitter
+			var APP_KEY = "GmdbD9T3jaf5fcC2Bfc1R6YqmZM";
+			 
+			// COnfiguramos Oauth
+			OAuth.initialize(APP_KEY);
+			 
+			$('[data-action]').on('click', function (e) {
+				var $self = $(this);
+				var action = $self.data('action');
+				doAction(action);
+			});
+			var doAction = function (action) {
+				if (action === "linkTwitter") {
+					linkTwitter();
+				}
+			}
+			 
+			function linkTwitter () {
+				OAuth.popup('twitter').done(function(result) {
+					console.log(result);
+					result.me().done(function(data) {
+						var fbid = $('.drawermenu').attr('data-fbid');
+						addLogroTwitter(fbid);
+					});
+				});
+			}
+
 			height = $(window).height();
 
 			$('.content, .content2').height(height - 72);
@@ -153,7 +180,6 @@ var app = {
 				.find('.button-circle').remove();
 
 				$('.eng-'+number+' .preselfie-desc').after('<p class="button-circle"><img src="img/ic_checked.png"></p>');
-				//.find('img').attr('src', 'img/ic_checked.png');
 			}
 			/********************************************
 				ACTIONS
@@ -199,6 +225,13 @@ var app = {
 				back = $('.'+action).data('back');
 				backtion = $('.'+action).attr('data-backtion');
 				edit = $('.'+action).attr('data-edit');
+				rightbutton = $('.'+action).attr('data-rightbutton');
+
+				if(rightbutton == 'none'){
+					$('.button-right').hide();
+				}else{
+					$('.button-right').show();
+				}
 
 				if(edit == 'true'){
 					$('.edit').show();
@@ -236,6 +269,25 @@ var app = {
 				$('.cortina').fadeOut(500);
 			});
 
+			$('.save').click(function(){
+				var fbid = $('.drawermenu').attr('data-fbid');
+				var nombre = $('input[name="nombre"]').val();
+				var biografia = $('input[name="biografia"]').val();
+				var update = $.ajax({
+					url: 'http://api.brillamexico.org/user/edit/'+fbid,
+					method: 'POST',
+					data: {
+						name: nombre,
+						bio: biografia
+					}
+				});
+
+				update.done(function(data){
+					loadDataFacebook(fbid);
+					addLogroPerfil(fbid);
+				});
+			});
+
 			$('.tabs a').click(function(event) {
 				event.preventDefault();
 				var action = $(this).attr('href');
@@ -251,6 +303,28 @@ var app = {
 				fieldaction = $(this).data('fieldaction');
 				backgroundBody = $('.'+action).data('body');
 				title = $('.'+action).data('title');
+				back = $('.'+action).data('back');
+				backtion = $('.'+action).attr('data-backtion');
+				edit = $('.'+action).attr('data-edit');
+				rightbutton = $('.'+action).attr('data-rightbutton');
+
+				if(edit == 'true'){
+					$('.edit').show();
+				}else{
+					$('.edit').hide();
+				}
+
+				if(back == true){
+					$('.back').show().attr('data-action', backtion);
+				}else{
+					$('.back').hide();
+				}
+
+				if(rightbutton == 'none'){
+					$('.button-right').hide();
+				}else{
+					$('.button-right').show();
+				}
 
 				$('.registro3').attr('data-fieldelected', fieldaction);
 
@@ -268,6 +342,30 @@ var app = {
 				}else{
 					action = $(this).data('action');
 					backgroundBody = $('.'+action).data('body');
+					title = $('.'+action).data('title');
+					back = $('.'+action).data('back');
+					backtion = $('.'+action).attr('data-backtion');
+					edit = $('.'+action).attr('data-edit');
+					rightbutton = $('.'+action).attr('data-rightbutton');
+
+					if(edit == 'true'){
+						$('.edit').show();
+					}else{
+						$('.edit').hide();
+					}
+
+					if(back == true){
+						$('.back').show().attr('data-action', backtion);
+					}else{
+						$('.back').hide();
+					}
+
+					if(rightbutton == 'none'){
+						$('.button-right').hide();
+					}else{
+						$('.button-right').show();
+					}
+
 					$('section').hide();
 					$('.'+action).fadeIn();
 					$('body').css('background', backgroundBody);
@@ -293,6 +391,14 @@ var app = {
 					back = $('.'+action).data('back');
 					backtion = $('.'+action).attr('data-backtion');
 					edit = $('.'+action).attr('data-edit');
+
+					rightbutton = $('.'+action).attr('data-rightbutton');
+
+					if(rightbutton == 'none'){
+						$('.button-right').hide();
+					}else{
+						$('.button-right').show();
+					}
 
 					if(edit == 'true'){
 						$('.edit').show();
@@ -328,6 +434,7 @@ var app = {
 					picture = $(this).data('picture');
 					userfbid = $(this).data('userfbid');
 					username = $(this).data('username');
+					idselfie = $(this).data('idselfie');
 					description = $(this).data('desc');
 					back = $('.'+action).data('back');
 					backtion = $('.'+action).data('backtion');
@@ -352,6 +459,7 @@ var app = {
 					$('.viewselfie-profile').attr('src', 'http://graph.facebook.com/'+userfbid+'/picture?type=large');
 					$('.viewselfie-name').text(username);
 					$('.viewselfie-desc').text(description);
+					$('.viewselfie-share').attr('data-url', 'http://api.brillamexico.org/selfie/'+idselfie);
 
 					$('section').hide();
 					$('.'+action).fadeIn();
@@ -372,6 +480,14 @@ var app = {
 				navbarStatus = $('.'+action).data('navbar');
 				title = $('.'+action).data('title');
 				edit = $('.'+action).attr('data-edit');
+
+				rightbutton = $('.'+action).attr('data-rightbutton');
+
+				if(rightbutton == 'none'){
+					$('.button-right').hide();
+				}else{
+					$('.button-right').show();
+				}
 
 				if(edit == 'true'){
 					$('.edit').show();
@@ -548,6 +664,7 @@ var app = {
 						goSelfie();
 					});
 					updateCompromisos(fbid);
+					addLogroCompromisos(fbid);
 					$('.share-button').text('COMPARTIR');
 				};
 				fail = function(error) {
@@ -674,6 +791,7 @@ var app = {
 				});
 
 				load.done(function( data ){
+					addLogro1(fbid);
 					if(data.error){
 						//navigator.notification.alert('Esta cuenta no existe', null, "Alerta", "Cerrar");
 						alert('Esta cuenta no existe');
@@ -684,9 +802,11 @@ var app = {
 
 						achievement = data.achievement.length;
 						$('.name, .perfil-name').text(data.name);
+						$('input[name="nombre"]').val(data.name);
 						$('.points').text(data.points);
 						$('.achievement').text(achievement);
 						$('.perfil-status').text(data.bio);
+						$('input[name="biografia"]').val(data.bio);
 						fieldaction_id = data.fieldaction_id;
 						redirectAction('perfil');
 
@@ -713,7 +833,7 @@ var app = {
 							});
 						});
 
-						$('.drawermenu').data('fbid', fbid).data('fieldaction', data.fieldaction_id);
+						$('.drawermenu').attr('data-fbid', fbid).attr('data-fieldaction', data.fieldaction_id);
 
 						if(fieldaction_id == 1){
 							$('.camera-button').attr('data-action', 'preselfie-jovenes');
@@ -724,6 +844,7 @@ var app = {
 						}
 
 						getActivity();
+						redirectAction('perfil');
 					}
 				});
 			}
@@ -786,7 +907,7 @@ var app = {
 							});
 						});
 
-						$('.drawermenu').data('fbid', fbid).data('fieldaction', data.fieldaction_id);
+						$('.drawermenu').attr('data-fbid', fbid).attr('data-fieldaction', data.fieldaction_id);
 
 						if(fieldaction_id == 1){
 							$('.camera-button').attr('data-action', 'preselfie-jovenes');
@@ -796,8 +917,199 @@ var app = {
 							$('.camera-button').attr('data-action', 'preselfie-empresarios');
 						}
 
+						addLogro1(fbid);
+						addLogroCompromisos(fbid);
+
 						getActivity();
 					});
+				});
+			}
+
+			function logros(fbid){
+				var load = $.ajax({
+					url: 'http://api.brillamexico.org/user/'+fbid,
+					method: 'GET',
+					dataType: 'json'
+				});
+
+				load.done(function( data ){
+
+				});
+			}
+
+			$('div.logro-section').click(function(){
+				$(this).css({
+					zIndex: -200,
+				});
+			});
+
+			function addLogro1(fbid){
+				var load = $.ajax({
+					url: 'http://api.brillamexico.org/user/'+fbid,
+					method: 'GET',
+					dataType: 'json'
+				});
+
+				load.done(function( data ){
+					var ids = [];
+					$.each(data.achievement, function(i, v){
+						ids.push(v.id);
+					});
+					if ($.inArray('1', ids) > -1){
+						//alert('Tiene el logro 1');
+					}else{
+						var add = $.ajax({
+							url: 'http://api.brillamexico.org/user/logro/'+fbid,
+							method: 'POST',
+							data:{
+								logro: 1,
+							},
+							dataType: 'json'
+						});
+
+						add.done(function(){
+							$('#nuevo-usuario').css({
+								zIndex: 200,
+							});
+						});
+					}
+				});
+			}
+
+			function addLogroCompromisos(fbid){
+				var load = $.ajax({
+					url: 'http://api.brillamexico.org/user/'+fbid,
+					method: 'GET',
+					dataType: 'json'
+				});
+
+				load.done(function( data ){
+					var ids = [];
+					$.each(data.achievement, function(i, v){
+						ids.push(v.id);
+					});
+					if ($.inArray('3', ids) > -1){
+
+						if ($.inArray('4', ids) > -1){
+
+						}else{
+							var load = $.ajax({
+								url: 'http://api.brillamexico.org/user/selfies/'+fbid,
+								method: 'GET',
+								dataType: 'json'
+							});
+
+							load.done(function( data ){
+								if(data.length >= 10){
+									var add = $.ajax({
+										url: 'http://api.brillamexico.org/user/logro/'+fbid,
+										method: 'POST',
+										data:{
+											logro: 4
+										},
+										dataType: 'json'
+									});
+
+									add.done(function(){
+										$('#super-comprometido').css({
+											zIndex: 200,
+										});
+									});
+								}
+							});
+						}
+					}else{
+						var load = $.ajax({
+							url: 'http://api.brillamexico.org/user/selfies/'+fbid,
+							method: 'GET',
+							dataType: 'json'
+						});
+
+						load.done(function( data ){
+							if(data.length >= 5){
+								var add = $.ajax({
+									url: 'http://api.brillamexico.org/user/logro/'+fbid,
+									method: 'POST',
+									data: {
+										logro: 3
+									},
+									dataType: 'json'
+								});
+
+								add.done(function(){
+									$('#don-compromisos').css({
+										zIndex: 200,
+									});
+								});
+							}
+						});
+					}
+				});
+			}
+
+			function addLogroTwitter(fbid){
+				var load = $.ajax({
+					url: 'http://api.brillamexico.org/user/'+fbid,
+					method: 'GET',
+					dataType: 'json'
+				});
+
+				load.done(function( data ){
+					var ids = [];
+					$.each(data.achievement, function(i, v){
+						ids.push(v.id);
+					});
+					if ($.inArray('6', ids) > -1){
+						//alert('Tiene el logro 1');
+					}else{
+						var add = $.ajax({
+							url: 'http://api.brillamexico.org/user/logro/'+fbid,
+							method: 'POST',
+							data:{
+								logro: 6,
+							},
+							dataType: 'json'
+						});
+
+						add.done(function(){
+							$('#amante-twitter').css({
+								zIndex: 200,
+							});
+						});
+					}
+				});
+			}
+
+			function addLogroPerfil(fbid){
+				var load = $.ajax({
+					url: 'http://api.brillamexico.org/user/'+fbid,
+					method: 'GET',
+					dataType: 'json'
+				});
+
+				load.done(function( data ){
+					var ids = [];
+					$.each(data.achievement, function(i, v){
+						ids.push(v.id);
+					});
+					if ($.inArray('2', ids) > -1){
+						//alert('Tiene el logro 1');
+					}else{
+						var add = $.ajax({
+							url: 'http://api.brillamexico.org/user/logro/'+fbid,
+							method: 'POST',
+							data:{
+								logro: 2,
+							},
+							dataType: 'json'
+						});
+
+						add.done(function(){
+							$('#perfil-completo').css({
+								zIndex: 200,
+							});
+						});
+					}
 				});
 			}
 
@@ -847,9 +1159,20 @@ var app = {
 				});
 			}
 
+			$('.new-share').click(function(){
+				var url = $(this).attr('data-url');
+				window.plugins.socialsharing.share('Les comparto esto', null, null, url);
+			});
+
+			$('.viewselfie-share').click(function(){
+				var url = $(this).attr('data-url');
+				window.plugins.socialsharing.share('Les comparto esto', null, null, url);
+			});
+
 			function loadNew(newId){
 				$('.new').empty();
 				$.getJSON('http://brillamexico.org/api.php?post='+newId, function(data) {
+					$('.new-share').attr('data-url', 'http://brillamexico.org/?p='+data.id);
 					var template = $('#new').html();
 					var html = Mustache.to_html(template, data);
 					$('.new').html(html);
@@ -952,7 +1275,7 @@ var app = {
 				});
 			});
 
-
+			$('.section-logro').show();
 			//dom finish
 	}
 };

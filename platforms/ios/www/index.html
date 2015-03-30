@@ -42,21 +42,21 @@
 
 		<!--llenado selfies de usuario-->
 		<script id="selfies" type="text/template">
-			<li class="goselfie" data-action="viewselfie" data-picture="{{picture}}" data-userfbid="{{user_id}}" data-username="{{user.name}}" data-desc="{{description}}">
+			<li class="goselfie" data-action="viewselfie" data-picture="{{picture}}" data-userfbid="{{user_id}}" data-username="{{user.name}}" data-desc="{{description}}" data-idselfie="{{id}}">
 				<img src="http://api.brillamexico.org/pictures/thumb/{{picture}}">
 			</li>
 		</script>
 
 		<!--llenado selfies de otros-->
 		<script id="perfildephotos" type="text/template">
-			<li class="goselfie" data-action="viewselfie-otro" data-picture="{{picture}}" data-userfbid="{{user_id}}" data-username="{{user.name}}" data-desc="{{description}}">
+			<li class="goselfie" data-action="viewselfie-otro" data-picture="{{picture}}" data-userfbid="{{user_id}}" data-username="{{user.name}}" data-desc="{{description}}" data-idselfie="{{id}}">
 				<img src="http://api.brillamexico.org/pictures/thumb/{{picture}}">
 			</li>
 		</script>
 
 		<!--llenado perfil de otros-->
 		<script id="selfie-single" type="text/template">
-			<li class="goselfie" data-action="viewselfie-otro-single" data-picture="{{picture}}" data-userfbid="{{user_id}}" data-username="{{user.name}}" data-desc="{{description}}">
+			<li class="goselfie" data-action="viewselfie-otro-single" data-picture="{{picture}}" data-userfbid="{{user_id}}" data-username="{{user.name}}" data-desc="{{description}}" data-idselfie="{{id}}">
 				<img src="http://api.brillamexico.org/pictures/thumb/{{picture}}">
 			</li>
 		</script>
@@ -209,7 +209,7 @@
 
 		<!-- REGISTRO 2 -->
 
-		<section class="registro2" data-body="#fff" data-navbar="no" data-drawer="no">
+		<section class="registro2" data-body="#fff" data-navbar="si" data-back="true" data-backtion="registro1" data-rightbutton="none" data-drawer="no">
 			<p class="action" data-action="registro1">¿QUÉ ERES?</p>
 			<img class="action-fieldaction" data-fieldaction="1" data-action="registro3" src="img/icono_jovenesadultos.png">
 			<p>Joven/Adulto</p>
@@ -221,7 +221,7 @@
 
 		<!-- REGISTRO 3 -->
 
-		<section class="registro3" data-body="#9dca30" data-navbar="no" data-drawer="no" data-fieldelected="">
+		<section class="registro3" data-body="#9dca30" data-navbar="si" data-back="true" data-backtion="registro2" data-rightbutton="none" data-drawer="no" data-fieldelected="">
 			<div class="center">
 				<div class="hello">
 					<span>Hola</span>
@@ -234,17 +234,16 @@
 
 		<!-- REGISTRO 4 -->
 
-		<section class="registro4" data-body="#9dca30" data-navbar="no" data-drawer="no" data-nameelected="">
+		<section class="registro4" data-body="#9dca30" data-back="true" data-backtion="registro3" data-navbar="no" data-drawer="no" data-rightbutton="none" data-nameelected="">
 			<div class="center">
 				<p class="facebook-login">Hola <span class="un-h"></span>, nos gustaría saber un poco más de ti, conecta tu cuenta de <span class="fb-h">facebook</span> para participar</p>
 				<p class="logIn">Iniciar sesión con Facebook</p>
-				<p class="action">Ir a perfil</p>
 			</div>
 		</section>
 
 		<!-- ACCOUNT EXISTS -->
 
-		<section class="account-exists" data-body="#9dca30" data-navbar="no" data-drawer="no">
+		<section class="account-exists" data-body="#9dca30" data-navbar="no" data-drawer="no" data-rightbutton="none">
 			<div class="center">
 				<p class="facebook-login">¡Hola de nuevo!, por favor vuelve a iniciar sesión</p>
 				<p class="logIn">Iniciar sesion con facebook</p>
@@ -253,7 +252,7 @@
 
 		<!-- PERFIL -->
 
-		<section class="perfil" data-body="#490256" data-navbar="si" data-drawer="si" data-buttonright="edit" data-title="Mi Perfil" data-edit="true">
+		<section class="perfil" data-body="#490256" data-navbar="si" data-drawer="si" data-buttonright="edit" data-title="Mi Perfil" data-edit="true" data-rightbutton="">
 			<div class="content">
 				<div class="perfil-ciudad">
 					<img class="foto" src="">
@@ -285,6 +284,9 @@
 					<ul class="selfies-list">
 					</ul>
 				</div>
+				<div class="btn twitter outputTwitterID" data-action="linkTwitter">
+					Iniciar sesión con Twitter
+				</div>
 			</div>
 			<p class="button-circle action floated camera-button" data-action="">
 				<img src="img/ic_camera.png">
@@ -293,7 +295,7 @@
 
 		<!-- EDITAR PERFIL -->
 
-		<section class="editar-perfil" data-title="Editar Perfil" data-body="#490256" data-navbar="si" data-drawer="si">
+		<section class="editar-perfil" data-title="Editar Perfil" data-body="#490256" data-navbar="si" data-drawer="si" data-rightbutton="">
 			<div class="content">
 				<div class="perfil-ciudad">
 					<img class="foto" src="">
@@ -305,7 +307,7 @@
 				<label>
 					Biografía
 				</label>
-				<input class="input-edit" type="text" name="biografía">
+				<input class="input-edit" type="text" name="biografia">
 				<div class="save-container">
 					<div class="save">Guardar Cambios</div>
 				</div>
@@ -314,7 +316,7 @@
 
 		<!-- PERFIL DE ??? -->
 
-		<section class="perfilde" data-title="" data-body="#490256" data-navbar="si" data-drawer="si" data-username="" data-back="true" data-backtion="actividad">
+		<section class="perfilde" data-title="" data-body="#490256" data-navbar="si" data-drawer="si" data-username="" data-back="true" data-backtion="actividad" data-rightbutton="">
 			<div class="content">
 				<div class="perfil-ciudad-de">
 					<img class="foto" src="">
@@ -386,7 +388,7 @@
 
 				</div>
 			</div>
-			<p onclick="window.plugins.socialsharing.share('Message only')" class="button-circle floated">
+			<p class="button-circle floated new-share">
 				<img src="img/ic_share.png">
 			</p>
 		</section>
@@ -406,6 +408,9 @@
 					</div>
 				</div>
 			</div>
+			<p class="button-circle floated viewselfie-share">
+				<img src="img/ic_share.png">
+			</p>
 		</section>
 
 		<!-- VER SELFIE OTRO -->
@@ -423,6 +428,9 @@
 					</div>
 				</div>
 			</div>
+			<p class="button-circle floated viewselfie-share">
+				<img src="img/ic_share.png">
+			</p>
 		</section>
 
 		<!-- VER SELFIE OTRO SINGLE -->
@@ -608,29 +616,53 @@
 			</div>
 		</section>
 
-		<section class="nuevo-usuario" data-body="#e52d72" data-navbar="no" data-drawer="no">
-			
-		</section>
+		<div class="logro-section verde" id="nuevo-usuario">
+			<img class="img-logro" src="img/l_newuser.png">
+			<p class="genial">¡GENIAL!</p>
+			<p class="texto-logro">Haz conseguido el logro "<b>Nuevo Usuario</b>" y ganado</p>
+			<p class="ganancia rosa">50 puntos</p>
+			<p class="continuar"></p>
+		</div>
 
-		<section class="perfil-completo" data-body="#e52d72" data-navbar="no" data-drawer="no">
-			
-		</section>
+		<div class="logro-section verde" id="perfil-completo">
+			<img class="img-logro" src="img/l_perfilcompleto.png">
+			<p class="genial">¡GENIAL!</p>
+			<p class="texto-logro">Haz conseguido el logro "<b>Perfil Completo</b>" y ganado</p>
+			<p class="ganancia rosa">50 puntos</p>
+			<p class="continuar"></p>
+		</div>
 
-		<section class="don-compromisos" data-body="#e52d72" data-navbar="no" data-drawer="no">
-			
-		</section>
+		<div class="logro-section" id="don-compromisos">
+			<img class="img-logro" src="img/l_doncompromisos.png">
+			<p class="genial">¡GENIAL!</p>
+			<p class="texto-logro">Haz conseguido el logro "<b>Don compromisos</b>" y ganado</p>
+			<p class="ganancia">50 puntos</p>
+			<p class="continuar"></p>
+		</div>
 
-		<section class="super-comprometido" data-body="#e52d72" data-navbar="no" data-drawer="no">
-			
-		</section>
+		<div class="logro-section verde" id="super-comprometido">
+			<img class="img-logro" src="img/l_supercomprometido.png">
+			<p class="genial">¡GENIAL!</p>
+			<p class="texto-logro">Haz conseguido el logro "<b>Super comprometido</b>" y ganado</p>
+			<p class="ganancia rosa">100 puntos</p>
+			<p class="continuar"></p>
+		</div>
 
-		<section class="amante-twitter" data-body="#e52d72" data-navbar="no" data-drawer="no">
-			
-		</section>
+		<div class="logro-section" id="amante-twitter">
+			<img class="img-logro" src="img/l_twitterlover.png">
+			<p class="genial">¡GENIAL!</p>
+			<p class="texto-logro">Haz conseguido el logro "<b>Amante de twitter</b>" y ganado</p>
+			<p class="ganancia">50 puntos</p>
+			<p class="continuar"></p>
+		</div>
 
-		<section class="viralizador" data-body="#e52d72" data-navbar="no" data-drawer="no">
-			
-		</section>
+		<div class="logro-section verde" id="viralizador">
+			<img class="img-logro" src="img/l_viralizador.png">
+			<p class="genial">¡GENIAL!</p>
+			<p class="texto-logro">Haz conseguido el logro "<b>Viralizador</b>" y ganado</p>
+			<p class="ganancia rosa">100 puntos</p>
+			<p class="continuar"></p>
+		</div>
 
 		<!--================================== PRESELFIES =====================================-->
 		<!--================================== PRESELFIES =====================================-->
@@ -656,7 +688,9 @@
 						<p class="preselfie-title">¿Cual es tu compromiso?</p>
 						<img class="preselfie-icon" src="img/ic_compromisos/ic_1_2.png">
 						<p class="preselfie-comp">ME COMPROMETO A</p>
-						<p class="preselfie-desc"></p>
+						<p class="preselfie-desc">
+							A consumir energía sin desperdiciarla y así haré brillar a México
+						</p>
 						<p class="button-circle action camera" data-action="selfie">
 							<img src="img/ic_camera.png">
 						</p>
@@ -667,7 +701,9 @@
 						<p class="preselfie-title">¿Cual es tu compromiso?</p>
 						<img class="preselfie-icon" src="img/ic_compromisos/ic_1_3.png">
 						<p class="preselfie-comp">ME COMPROMETO A</p>
-						<p class="preselfie-desc"></p>
+						<p class="preselfie-desc">
+							A usar más transporte público para reducir mi huella ecológica y así haré brillar a México
+						</p>
 						<p class="button-circle action camera" data-action="selfie">
 							<img src="img/ic_camera.png">
 						</p>
@@ -678,7 +714,9 @@
 						<p class="preselfie-title">¿Cual es tu compromiso?</p>
 						<img class="preselfie-icon" src="img/ic_compromisos/ic_1_4.png">
 						<p class="preselfie-comp">ME COMPROMETO A</p>
-						<p class="preselfie-desc"></p>
+						<p class="preselfie-desc">
+							A desconectar los aparatos eléctricos y apagar las luces cuando no los esté utilizando y así haré brillar a México
+						</p>
 						<p class="button-circle action camera" data-action="selfie">
 							<img src="img/ic_camera.png">
 						</p>
@@ -689,7 +727,9 @@
 						<p class="preselfie-title">¿Cual es tu compromiso?</p>
 						<img class="preselfie-icon" src="img/ic_compromisos/ic_1_5.png">
 						<p class="preselfie-comp">ME COMPROMETO A</p>
-						<p class="preselfie-desc"></p>
+						<p class="preselfie-desc">
+							A usar focos ahorradores y así haré brillar a México
+						</p>
 						<p class="button-circle action camera" data-action="selfie">
 							<img src="img/ic_camera.png">
 						</p>
@@ -700,7 +740,9 @@
 						<p class="preselfie-title">¿Cual es tu compromiso?</p>
 						<img class="preselfie-icon" src="img/ic_compromisos/ic_1_6.png">
 						<p class="preselfie-comp">ME COMPROMETO A</p>
-						<p class="preselfie-desc"></p>
+						<p class="preselfie-desc">
+							A usar la bicicleta para viajes cortos y así haré brillar a México
+						</p>
 						<p class="button-circle action camera" data-action="selfie">
 							<img src="img/ic_camera.png">
 						</p>
@@ -711,7 +753,9 @@
 						<p class="preselfie-title">¿Cual es tu compromiso?</p>
 						<img class="preselfie-icon" src="img/ic_compromisos/ic_1_7.png">
 						<p class="preselfie-comp">ME COMPROMETO A</p>
-						<p class="preselfie-desc"></p>
+						<p class="preselfie-desc">
+							A lavar en la lavadora con carga completa y así haré brillar a México
+						</p>
 						<p class="button-circle action camera" data-action="selfie">
 							<img src="img/ic_camera.png">
 						</p>
@@ -722,7 +766,9 @@
 						<p class="preselfie-title">¿Cual es tu compromiso?</p>
 						<img class="preselfie-icon" src="img/ic_compromisos/ic_1_8.png">
 						<p class="preselfie-comp">ME COMPROMETO A</p>
-						<p class="preselfie-desc"></p>
+						<p class="preselfie-desc">
+							A fomentar en mi familia el uso eficiente de energía y así haré brillar a México
+						</p>
 						<p class="button-circle action camera" data-action="selfie">
 							<img src="img/ic_camera.png">
 						</p>
@@ -733,7 +779,9 @@
 						<p class="preselfie-title">¿Cual es tu compromiso?</p>
 						<img class="preselfie-icon" src="img/ic_compromisos/ic_1_9.png">
 						<p class="preselfie-comp">ME COMPROMETO A</p>
-						<p class="preselfie-desc"></p>
+						<p class="preselfie-desc">
+							A usar la escalera cuando sea posible, evitando el uso innecesario del ascensor; y así haré brillar a México
+						</p>
 						<p class="button-circle action camera" data-action="selfie">
 							<img src="img/ic_camera.png">
 						</p>
@@ -744,7 +792,9 @@
 						<p class="preselfie-title">¿Cual es tu compromiso?</p>
 						<img class="preselfie-icon" src="img/ic_compromisos/ic_1_10.png">
 						<p class="preselfie-comp">ME COMPROMETO A</p>
-						<p class="preselfie-desc"></p>
+						<p class="preselfie-desc">
+							A apagar las luces y computadoras de mi trabajo y así haré brillar a México
+						</p>
 						<p class="button-circle action camera" data-action="selfie">
 							<img src="img/ic_camera.png">
 						</p>
@@ -755,7 +805,9 @@
 						<p class="preselfie-title">¿Cual es tu compromiso?</p>
 						<img class="preselfie-icon" src="img/ic_compromisos/ic_1_11.png">
 						<p class="preselfie-comp">ME COMPROMETO A</p>
-						<p class="preselfie-desc"></p>
+						<p class="preselfie-desc">
+							A comprar alimentos locales y de temporada y así haré brillar a México
+						</p>
 						<p class="button-circle action camera" data-action="selfie">
 							<img src="img/ic_camera.png">
 						</p>
@@ -766,7 +818,9 @@
 						<p class="preselfie-title">¿Cual es tu compromiso?</p>
 						<img class="preselfie-icon" src="img/ic_compromisos/ic_1_12.png">
 						<p class="preselfie-comp">ME COMPROMETO A</p>
-						<p class="preselfie-desc"></p>
+						<p class="preselfie-desc">
+							A aprovechar la luz natural del día y así haré brillar a México
+						</p>
 						<p class="button-circle action camera" data-action="selfie">
 							<img src="img/ic_camera.png">
 						</p>
@@ -777,7 +831,9 @@
 						<p class="preselfie-title">¿Cual es tu compromiso?</p>
 						<img class="preselfie-icon" src="img/ic_compromisos/ic_1_13.png">
 						<p class="preselfie-comp">ME COMPROMETO A</p>
-						<p class="preselfie-desc"></p>
+						<p class="preselfie-desc">
+							A usar aparatos electrónicos que tengan a etiqueta de eficiencia energética y así haré brillar a México
+						</p>
 						<p class="button-circle action camera" data-action="selfie">
 							<img src="img/ic_camera.png">
 						</p>
@@ -788,7 +844,9 @@
 						<p class="preselfie-title">¿Cual es tu compromiso?</p>
 						<img class="preselfie-icon" src="img/ic_compromisos/ic_1_14.png">
 						<p class="preselfie-comp">ME COMPROMETO A</p>
-						<p class="preselfie-desc"></p>
+						<p class="preselfie-desc">
+							A cerrar las puertas y ventanas para optimizar el uso de aire acondicionado y así haré brillar a México
+						</p>
 						<p class="button-circle action camera" data-action="selfie">
 							<img src="img/ic_camera.png">
 						</p>
@@ -806,7 +864,9 @@
 						<p class="preselfie-title">¿Cual es tu compromiso?</p>
 						<img class="preselfie-icon" src="img/ic_compromisos/ic_2_15.png">
 						<p class="preselfie-comp">ME COMPROMETO A</p>
-						<p class="preselfie-desc"></p>
+						<p class="preselfie-desc">
+							A usar de manera eficiente la energía dentro de mi empresa y en mi casa y así haré brillar a México
+						</p>
 						<p class="button-circle action camera" data-action="selfie">
 							<img src="img/ic_camera.png">
 						</p>
@@ -817,7 +877,9 @@
 						<p class="preselfie-title">¿Cual es tu compromiso?</p>
 						<img class="preselfie-icon" src="img/ic_compromisos/ic_2_16.png">
 						<p class="preselfie-comp">ME COMPROMETO A</p>
-						<p class="preselfie-desc"></p>
+						<p class="preselfie-desc">
+							A abrir una empresa que genere fuentes de energía verde y así haré brillar a México
+						</p>
 						<p class="button-circle action camera" data-action="selfie">
 							<img src="img/ic_camera.png">
 						</p>
@@ -828,7 +890,9 @@
 						<p class="preselfie-title">¿Cual es tu compromiso?</p>
 						<img class="preselfie-icon" src="img/ic_compromisos/ic_2_17.png">
 						<p class="preselfie-comp">ME COMPROMETO A</p>
-						<p class="preselfie-desc"></p>
+						<p class="preselfie-desc">
+							A abrir una empresa que haga uso de energías renovables y así hare brillar a México
+						</p>
 						<p class="button-circle action camera" data-action="selfie">
 							<img src="img/ic_camera.png">
 						</p>
@@ -839,7 +903,9 @@
 						<p class="preselfie-title">¿Cual es tu compromiso?</p>
 						<img class="preselfie-icon" src="img/ic_compromisos/ic_2_18.png">
 						<p class="preselfie-comp">ME COMPROMETO A</p>
-						<p class="preselfie-desc"></p>
+						<p class="preselfie-desc">
+							A impulsar proyectos que promuevan la generación de nuevas fuentes de energía y así hare brillar a México
+						</p>
 						<p class="button-circle action camera" data-action="selfie">
 							<img src="img/ic_camera.png">
 						</p>
@@ -857,7 +923,9 @@
 						<p class="preselfie-title">¿Cual es tu compromiso?</p>
 						<img class="preselfie-icon" src="img/ic_compromisos/ic_3_19.png">
 						<p class="preselfie-comp">ME COMPROMETO A</p>
-						<p class="preselfie-desc"></p>
+						<p class="preselfie-desc">
+							A que mi empresa utilice energía verde en sus procesos y así hare brillar a México
+						</p>
 						<p class="button-circle action camera" data-action="selfie">
 							<img src="img/ic_camera.png">
 						</p>
@@ -868,7 +936,9 @@
 						<p class="preselfie-title">¿Cual es tu compromiso?</p>
 						<img class="preselfie-icon" src="img/ic_compromisos/ic_3_20.png">
 						<p class="preselfie-comp">ME COMPROMETO A</p>
-						<p class="preselfie-desc"></p>
+						<p class="preselfie-desc">
+							A que mi empresa sea más eficiente en sus procesos productivos mediante el uso de energías limpias y así hare brillar a México
+						</p>
 						<p class="button-circle action camera" data-action="selfie">
 							<img src="img/ic_camera.png">
 						</p>
@@ -879,7 +949,9 @@
 						<p class="preselfie-title">¿Cual es tu compromiso?</p>
 						<img class="preselfie-icon" src="img/ic_compromisos/ic_3_21.png">
 						<p class="preselfie-comp">ME COMPROMETO A</p>
-						<p class="preselfie-desc"></p>
+						<p class="preselfie-desc">
+							A capacitarme, así como a mi personal, en el uso y la importancia de las nuevas energías y así hare brillar a México
+						</p>
 						<p class="button-circle action camera" data-action="selfie">
 							<img src="img/ic_camera.png">
 						</p>
@@ -890,7 +962,9 @@
 						<p class="preselfie-title">¿Cual es tu compromiso?</p>
 						<img class="preselfie-icon" src="img/ic_compromisos/ic_3_22.png">
 						<p class="preselfie-comp">ME COMPROMETO A</p>
-						<p class="preselfie-desc"></p>
+						<p class="preselfie-desc">
+							A trabajar con proveedores que hagan uso de procesos eficientes de energía y así hare brillar a México
+						</p>
 						<p class="button-circle action camera" data-action="selfie">
 							<img src="img/ic_camera.png">
 						</p>
@@ -901,7 +975,9 @@
 						<p class="preselfie-title">¿Cual es tu compromiso?</p>
 						<img class="preselfie-icon" src="img/ic_compromisos/ic_3_23.png">
 						<p class="preselfie-comp">ME COMPROMETO A</p>
-						<p class="preselfie-desc"></p>
+						<p class="preselfie-desc">
+							A implementar energías renovables dentro de mi empresa y así hare brillar a México
+						</p>
 						<p class="button-circle action camera" data-action="selfie">
 							<img src="img/ic_camera.png">
 						</p>
@@ -912,7 +988,9 @@
 						<p class="preselfie-title">¿Cual es tu compromiso?</p>
 						<img class="preselfie-icon" src="img/ic_compromisos/ic_3_24.png">
 						<p class="preselfie-comp">ME COMPROMETO A</p>
-						<p class="preselfie-desc"></p>
+						<p class="preselfie-desc">
+							A usar materiales reciclables dentro de la empresa y así hare brillar a México
+						</p>
 						<p class="button-circle action camera" data-action="selfie">
 							<img src="img/ic_camera.png">
 						</p>
@@ -923,7 +1001,9 @@
 						<p class="preselfie-title">¿Cual es tu compromiso?</p>
 						<img class="preselfie-icon" src="img/ic_compromisos/ic_3_25.png">
 						<p class="preselfie-comp">ME COMPROMETO A</p>
-						<p class="preselfie-desc"></p>
+						<p class="preselfie-desc">
+							A brindar capacitación para el uso eficiente de energía y la importancia de la energía verde, y así haré brillar a México.
+						</p>
 						<p class="button-circle action camera" data-action="selfie">
 							<img src="img/ic_camera.png">
 						</p>
@@ -934,7 +1014,9 @@
 						<p class="preselfie-title">¿Cual es tu compromiso?</p>
 						<img class="preselfie-icon" src="img/ic_compromisos/ic_3_26.png">
 						<p class="preselfie-comp">ME COMPROMETO A</p>
-						<p class="preselfie-desc"></p>
+						<p class="preselfie-desc">
+							A apagar focos y desconectar aparatos electrónicos en áreas de trabajo que no se estén utilizando y así hare brillar a México
+						</p>
 						<p class="button-circle action camera" data-action="selfie">
 							<img src="img/ic_camera.png">
 						</p>
@@ -945,7 +1027,9 @@
 						<p class="preselfie-title">¿Cual es tu compromiso?</p>
 						<img class="preselfie-icon" src="img/ic_compromisos/ic_3_27.png">
 						<p class="preselfie-comp">ME COMPROMETO A</p>
-						<p class="preselfie-desc"></p>
+						<p class="preselfie-desc">
+							A impulsar proyectos que promuevan el uso eficiente de energía y así hare brillar a México
+						</p>
 						<p class="button-circle action camera" data-action="selfie">
 							<img src="img/ic_camera.png">
 						</p>
