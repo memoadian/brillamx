@@ -118,6 +118,7 @@ var app = {
 						});
 						twit.done(function(){
 							addLogroTwitter(fbid);
+							$('.outputTwitterID').text('Conectado a twitter');
 						});
 					});
 				});
@@ -704,6 +705,9 @@ var app = {
 							$('.share-button').text(perc + '%');
 						}else{
 							$('.share-button').text('PROCESANDO...');
+							setTimeout(function(){
+
+							}, 60000);
 						}
 					} else {
 						loadingStatus.increment();
@@ -792,6 +796,80 @@ var app = {
 				TEMPLATES
 			*********************************************/
 
+			function reloadMe(fbid){
+				setTimeout(function(){
+
+					var load = $.ajax({
+						url: 'http://api.brillamexico.org/user/'+fbid,
+						method: 'GET',
+						dataType: 'json'
+					});
+
+					load.done(function( data ){
+						addLogro1(fbid);
+						if(data.error){
+							//navigator.notification.alert('Esta cuenta no existe', null, "Alerta", "Cerrar");
+							alert('Esta cuenta no existe');
+							redirectAction('registro1');
+						}else{
+							foto = 'http://graph.facebook.com/'+fbid+'/picture?type=large';
+							$('.foto').attr('src', foto);
+
+							achievement = data.achievement.length;
+							$('.name, .perfil-name').text(data.name);
+							$('input[name="nombre"]').val(data.name);
+							$('.points').text(data.points);
+							$('.achievement').text(achievement);
+							$('.perfil-status').text(data.bio);
+							$('input[name="biografia"]').val(data.bio);
+							fieldaction_id = data.fieldaction_id;
+							redirectAction('perfil');
+
+							if(data.twid != ''){
+								$('.outputTwitterID').text('Conectado a twitter');
+							}
+
+							$.getJSON('http://api.brillamexico.org/user/selfies/'+fbid, function(data) {
+								photos = data.length;
+								if(photos > 0){
+									$('.photos').text(photos);
+									$('.selfies-list').empty();
+									$.each(data, function(index, value){
+										var template = $('#selfies').html();
+										var html = Mustache.to_html(template, value);
+										$('.selfies-list').append(html);
+									});
+								}
+								goSelfie();
+							});
+
+							$.getJSON('http://api.brillamexico.org/user/'+fbid, function(data) {
+								$('#logros').html('');
+								$.each(data.achievement, function(index, value){
+									var template = $('#listlogros').html();
+									var html = Mustache.to_html(template, value);
+									$('#logros').append(html);
+								});
+							});
+
+							$('.drawermenu').attr('data-fbid', fbid).attr('data-fieldaction', data.fieldaction_id);
+
+							if(fieldaction_id == 1){
+								$('.camera-button').attr('data-action', 'preselfie-jovenes');
+							}else if(fieldaction_id == 2){
+								$('.camera-button').attr('data-action', 'preselfie-emprendedores');
+							}else{
+								$('.camera-button').attr('data-action', 'preselfie-empresarios');
+							}
+
+							getActivity();
+							redirectAction('perfil');
+						}
+					});
+
+				}, 500);
+			}
+
 			function loadDataFacebook(fbid){
 				var load = $.ajax({
 					url: 'http://api.brillamexico.org/user/'+fbid,
@@ -819,6 +897,10 @@ var app = {
 						fieldaction_id = data.fieldaction_id;
 						redirectAction('perfil');
 
+						if(data.twid != ''){
+							$('.outputTwitterID').text('Conectado a twitter');
+						}
+
 						$.getJSON('http://api.brillamexico.org/user/selfies/'+fbid, function(data) {
 							photos = data.length;
 							if(photos > 0){
@@ -834,7 +916,7 @@ var app = {
 						});
 
 						$.getJSON('http://api.brillamexico.org/user/'+fbid, function(data) {
-							$('#logros').empty();
+							$('#logros').html('');
 							$.each(data.achievement, function(index, value){
 								var template = $('#listlogros').html();
 								var html = Mustache.to_html(template, value);
@@ -853,6 +935,7 @@ var app = {
 						}
 
 						getActivity();
+						addLogroCompromisos(fbid);
 						redirectAction('perfil');
 					}
 				});
@@ -927,7 +1010,6 @@ var app = {
 						}
 
 						addLogro1(fbid);
-						addLogroCompromisos(fbid);
 
 						getActivity();
 					});
@@ -980,6 +1062,7 @@ var app = {
 							$('#nuevo-usuario').css({
 								zIndex: 200,
 							});
+							reloadMe(fbid);
 						});
 					}
 				});
@@ -1023,6 +1106,7 @@ var app = {
 										$('#super-comprometido').css({
 											zIndex: 200,
 										});
+										reloadMe(fbid);
 									});
 								}
 							});
@@ -1049,6 +1133,7 @@ var app = {
 									$('#don-compromisos').css({
 										zIndex: 200,
 									});
+									reloadMe(fbid);
 								});
 							}
 						});
@@ -1084,6 +1169,41 @@ var app = {
 							$('#amante-twitter').css({
 								zIndex: 200,
 							});
+							reloadMe(fbid);
+						});
+					}
+				});
+			}
+
+			function addLogroShare(fbid){
+				var load = $.ajax({
+					url: 'http://api.brillamexico.org/user/'+fbid,
+					method: 'GET',
+					dataType: 'json'
+				});
+
+				load.done(function( data ){
+					var ids = [];
+					$.each(data.achievement, function(i, v){
+						ids.push(v.id);
+					});
+					if ($.inArray('5', ids) > -1){
+						//alert('Tiene el logro 5');
+					}else{
+						var add = $.ajax({
+							url: 'http://api.brillamexico.org/user/logro/'+fbid,
+							method: 'POST',
+							data:{
+								logro: 2,
+							},
+							dataType: 'json'
+						});
+
+						add.done(function(){
+							$('#perfil-completo').css({
+								zIndex: 200,
+							});
+							reloadMe(fbid);
 						});
 					}
 				});
@@ -1117,6 +1237,7 @@ var app = {
 							$('#perfil-completo').css({
 								zIndex: 200,
 							});
+							reloadMe(fbid);
 						});
 					}
 				});
@@ -1169,8 +1290,21 @@ var app = {
 			}
 
 			$('.new-share').click(function(){
+				var fbid = $('.drawermenu').attr('data-fbid');
 				var url = $(this).attr('data-url');
-				window.plugins.socialsharing.share('Les comparto esto', null, null, url);
+				window.plugins.socialsharing.share('Les comparto esto', null, null, url, function(){
+					shares = $.ajax({
+						url: 'http://api.brillamexico.org/share/'+fbid,
+						method: 'POST',
+						data:{
+							share: 'share'
+						}
+					});
+
+					shares.done(function(){
+						alert('compartido');
+					});
+				});
 			});
 
 			$('.viewselfie-share').click(function(){
