@@ -523,21 +523,23 @@
 			if ($.inArray('5', ids) > -1){
 				//alert('Tiene el logro 5');
 			}else{
-				var add = $.ajax({
-					url: hostname + '/user/logro/'+fbid,
-					method: 'POST',
-					data:{
-						logro: 2,
-					},
-					dataType: 'json'
-				});
-
-				add.done(function(){
-					$('#perfil-completo').css({
-						zIndex: 200,
+				if(data.shares > 5){
+					var add = $.ajax({
+						url: hostname + '/user/logro/'+fbid,
+						method: 'POST',
+						data:{
+							logro: 5,
+						},
+						dataType: 'json'
 					});
-					loadDataFacebook(fbid);
-				});
+
+					add.done(function(){
+						$('#viralizador').css({
+							zIndex: 200,
+						});
+						loadDataFacebook(fbid);
+					});
+				}
 			}
 		});
 	}
@@ -737,7 +739,8 @@
 	function loadNew(newId){
 		$('.new').empty();
 		$.getJSON(hostname + 'wordpress/nota/' + newId, function(data) {
-			$('.new-share').attr('data-url', 'http://brillamexico.org/?p='+data.id);
+			$('.facebook').attr('data-url', 'http://brillamexico.org/?p='+data.id);
+			$('.twitter').attr('data-url', 'http://brillamexico.org/?p='+data.id);
 			var template = $('#new').html();
 			var html = Mustache.to_html(template, data);
 			$('.new').html(html);

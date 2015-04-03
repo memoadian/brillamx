@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		1072AB93D2B24D3AACD43CF1 /* CDVCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A34115405AB4AFEAD5E6A6A /* CDVCamera.m */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
@@ -55,6 +54,10 @@
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
 		D6FDA5D0A7C2429ABE1B379B /* CDVJpegHeaderWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BD81C5D5E0C94A56BBB16A5C /* CDVJpegHeaderWriter.m */; };
 		D7D06D8D6AFC4BC3997F396D /* CDVCookies.m in Sources */ = {isa = PBXBuildFile; fileRef = 525D50D2CEB24CA98CD699CC /* CDVCookies.m */; };
+		055E18F8AB054D798EB829E2 /* CDVNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 878061560E9648A1B957C058 /* CDVNotification.m */; };
+		F46437CB08AA4DBBA8566A4B /* CDVNotification.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6A92C2AD43084671A9FCC800 /* CDVNotification.bundle */; };
+		CDE2F6581C184FF996141359 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C666B9B363B45D4AF69FCC0 /* AudioToolbox.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		7295EB850F4244D3BA2F192F /* CDVVibration.m in Sources */ = {isa = PBXBuildFile; fileRef = 4662F72DA7814DBA9D44DAC7 /* CDVVibration.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +147,12 @@
 		F49707C28F994E9EB428B21F /* CDVInAppBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVInAppBrowser.h; path = org.apache.cordova.inappbrowser/CDVInAppBrowser.h; sourceTree = "<group>"; };
 		F73BA9983A584041A50D4D0C /* CoreLocation.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = BrillaMexico/config.xml; sourceTree = "<group>"; };
+		878061560E9648A1B957C058 /* CDVNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVNotification.m"; path = "org.apache.cordova.dialogs/CDVNotification.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		CE74685611AE4A2B9670E35A /* CDVNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVNotification.h"; path = "org.apache.cordova.dialogs/CDVNotification.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		6A92C2AD43084671A9FCC800 /* CDVNotification.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = "CDVNotification.bundle"; path = "CDVNotification.bundle"; sourceTree = "<group>"; };
+		8C666B9B363B45D4AF69FCC0 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AudioToolbox.framework"; path = "System/Library/Frameworks/AudioToolbox.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		4662F72DA7814DBA9D44DAC7 /* CDVVibration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVVibration.m"; path = "org.apache.cordova.vibration/CDVVibration.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		4834C5AE381A40BB971A3D7E /* CDVVibration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVVibration.h"; path = "org.apache.cordova.vibration/CDVVibration.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +168,7 @@
 				438C52A3D41649F488C870A4 /* CoreLocation.framework in Frameworks */,
 				5860203914DC44AF82D4D212 /* Social.framework in Frameworks */,
 				914E2BBC1BDC4E83ACB1E377 /* MessageUI.framework in Frameworks */,
+				CDE2F6581C184FF996141359 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +231,7 @@
 				308D052D1370CCF300D202BF /* icons */,
 				308D05311370CCF300D202BF /* splash */,
 				8D1107310486CEB800E47090 /* BrillaMexico-Info.plist */,
+				6A92C2AD43084671A9FCC800 /* CDVNotification.bundle */,
 			);
 			name = Resources;
 			path = BrillaMexico/Resources;
@@ -236,6 +247,7 @@
 				F73BA9983A584041A50D4D0C /* CoreLocation.framework */,
 				08794194B4C04460B5188294 /* Social.framework */,
 				4DB1504923B446FB8C87A081 /* MessageUI.framework */,
+				8C666B9B363B45D4AF69FCC0 /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -272,6 +284,10 @@
 				657E6D5A682B4B45B0944550 /* CDVCookies.h */,
 				C852688922444EF98D2DA9AD /* SocialSharing.m */,
 				9639A9596F874E4A9B555293 /* SocialSharing.h */,
+				878061560E9648A1B957C058 /* CDVNotification.m */,
+				CE74685611AE4A2B9670E35A /* CDVNotification.h */,
+				4662F72DA7814DBA9D44DAC7 /* CDVVibration.m */,
+				4834C5AE381A40BB971A3D7E /* CDVVibration.h */,
 			);
 			name = Plugins;
 			path = BrillaMexico/Plugins;
@@ -431,6 +447,7 @@
 				7E7966E11810823500FA85AD /* icon-50@2x.png in Resources */,
 				7E7966E51810823500FA85AD /* icon-76@2x.png in Resources */,
 				30FC414916E50CA1004E6F35 /* icon-72@2x.png in Resources */,
+				F46437CB08AA4DBBA8566A4B /* CDVNotification.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +489,8 @@
 				20A68A061E7B43D98949311F /* CDVInAppBrowser.m in Sources */,
 				D7D06D8D6AFC4BC3997F396D /* CDVCookies.m in Sources */,
 				C0EE6D1F64E7472A8AAD8BFA /* SocialSharing.m in Sources */,
+				055E18F8AB054D798EB829E2 /* CDVNotification.m in Sources */,
+				7295EB850F4244D3BA2F192F /* CDVVibration.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

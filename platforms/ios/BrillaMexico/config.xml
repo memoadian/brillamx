@@ -45,4 +45,10 @@
         <param name="onload" value="true" />
     </feature>
     <access origin="https://oauth.io" />
+    <feature name="Notification">
+        <param name="ios-package" value="CDVNotification" />
+    </feature>
+    <feature name="Vibration">
+        <param name="ios-package" value="CDVVibration" />
+    </feature>
 </widget>

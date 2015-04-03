@@ -1,6 +1,6 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
-/*    {
+    {
         "file": "plugins/org.apache.cordova.camera/www/CameraConstants.js",
         "id": "org.apache.cordova.camera.Camera",
         "clobbers": [
@@ -215,18 +215,35 @@ module.exports = [
         "merges": [
             "OAuth"
         ]
-    }*/
+    },
+    {
+        "file": "plugins/org.apache.cordova.dialogs/www/notification.js",
+        "id": "org.apache.cordova.dialogs.notification",
+        "merges": [
+            "navigator.notification"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.vibration/www/vibration.js",
+        "id": "org.apache.cordova.vibration.notification",
+        "merges": [
+            "navigator.notification",
+            "navigator"
+        ]
+    }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
-/*    "org.apache.cordova.camera": "0.3.6",
+    "org.apache.cordova.camera": "0.3.6",
     "org.apache.cordova.file": "1.3.3",
     "org.apache.cordova.file-transfer": "0.5.0",
     "org.apache.cordova.inappbrowser": "0.6.0",
     "com.bez4pieci.cookies": "0.0.1",
     "nl.x-services.plugins.socialsharing": "4.3.15",
-    "com.oauthio.plugins.oauthio": "0.2.4"*/
+    "com.oauthio.plugins.oauthio": "0.2.4",
+    "org.apache.cordova.dialogs": "0.3.0",
+    "org.apache.cordova.vibration": "0.3.13"
 }
 // BOTTOM OF METADATA
 });

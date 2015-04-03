@@ -44,6 +44,10 @@ var app = {
 		loadNews(1);
 		openFB.init({appId: '605895716209070'});
 
+		window.alert = function (txt) {
+			navigator.notification.alert(txt, null, "Brilla México", "Cerrar");
+		}
+
 		//preloads for navigator
 		loadDataFacebook(855665064499720);
 
@@ -234,9 +238,9 @@ var app = {
 		$('.facebook').click(function(){
 			var fbid = $('.drawermenu').attr('data-fbid');
 			var url = $(this).attr('data-url');
-			window.plugins.socialsharing.shareViaFacebook('Les comparto esto', null, null, url, function(){
+			window.plugins.socialsharing.shareViaFacebook('Les comparto esto', null, url, function(){
 				shares = $.ajax({
-					url: hostname + 'share/'+fbid,
+					url: hostname + 'user/share/'+fbid,
 					method: 'POST',
 					data:{
 						share: 'share'
@@ -244,35 +248,18 @@ var app = {
 				});
 
 				shares.done(function(){
-					alert('compartido');
+					alert('¡Gracias por Compartir!');
+					addLogroShare(fbid);
 				});
 			}, function(errormsg){alert(errormsg)});
 		});
 
-		$('.facebook').click(function(){
-			var fbid = $('.drawermenu').attr('data-fbid');
-			var url = $(this).attr('data-url');
-			window.plugins.socialsharing.shareViaFacebook('Les comparto esto', null, null, url, function(){
-				shares = $.ajax({
-					url: hostname + 'share/'+fbid,
-					method: 'POST',
-					data:{
-						share: 'share'
-					}
-				});
-
-				shares.done(function(){
-					alert('compartido');
-				});
-			}, function(errormsg){alert(errormsg)});
-		});
-
-		$('.facebook').click(function(){
+		$('.twitter').click(function(){
 			var fbid = $('.drawermenu').attr('data-fbid');
 			var url = $(this).attr('data-url');
 			window.plugins.socialsharing.shareViaTwitter('Les comparto esto', null, url, function(){
 				shares = $.ajax({
-					url: hostname + 'share/'+fbid,
+					url: hostname + 'user/share/'+fbid,
 					method: 'POST',
 					data:{
 						share: 'share'
@@ -280,7 +267,8 @@ var app = {
 				});
 
 				shares.done(function(){
-					alert('compartido');
+					alert('¡Gracias por Compartir!');
+					addLogroShare(fbid);
 				});
 			}, function(errormsg){alert(errormsg)});
 		});

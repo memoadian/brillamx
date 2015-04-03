@@ -48,6 +48,12 @@
                             "xml": true,
                             "count": 1
                         }
+                    ],
+                    "AudioToolbox.framework": [
+                        {
+                            "xml": true,
+                            "count": 2
+                        }
                     ]
                 }
             },
@@ -85,6 +91,14 @@
                         {
                             "xml": "<access origin=\"https://oauth.io\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Notification\"><param name=\"ios-package\" value=\"CDVNotification\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Vibration\"><param name=\"ios-package\" value=\"CDVVibration\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -121,6 +135,12 @@
             "PACKAGE_NAME": "mx.ambmultimedia.brillamx"
         },
         "com.oauthio.plugins.oauthio": {
+            "PACKAGE_NAME": "mx.ambmultimedia.brillamexico"
+        },
+        "org.apache.cordova.dialogs": {
+            "PACKAGE_NAME": "mx.ambmultimedia.brillamexico"
+        },
+        "org.apache.cordova.vibration": {
             "PACKAGE_NAME": "mx.ambmultimedia.brillamexico"
         }
     },
