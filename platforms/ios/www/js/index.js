@@ -231,10 +231,10 @@ var app = {
 			takePicture();
 		});
 
-		$('.new-share').click(function(){
+		$('.facebook').click(function(){
 			var fbid = $('.drawermenu').attr('data-fbid');
 			var url = $(this).attr('data-url');
-			window.plugins.socialsharing.share('Les comparto esto', null, null, url, function(){
+			window.plugins.socialsharing.shareViaFacebook('Les comparto esto', null, null, url, function(){
 				shares = $.ajax({
 					url: hostname + 'share/'+fbid,
 					method: 'POST',
@@ -246,7 +246,43 @@ var app = {
 				shares.done(function(){
 					alert('compartido');
 				});
-			});
+			}, function(errormsg){alert(errormsg)});
+		});
+
+		$('.facebook').click(function(){
+			var fbid = $('.drawermenu').attr('data-fbid');
+			var url = $(this).attr('data-url');
+			window.plugins.socialsharing.shareViaFacebook('Les comparto esto', null, null, url, function(){
+				shares = $.ajax({
+					url: hostname + 'share/'+fbid,
+					method: 'POST',
+					data:{
+						share: 'share'
+					}
+				});
+
+				shares.done(function(){
+					alert('compartido');
+				});
+			}, function(errormsg){alert(errormsg)});
+		});
+
+		$('.facebook').click(function(){
+			var fbid = $('.drawermenu').attr('data-fbid');
+			var url = $(this).attr('data-url');
+			window.plugins.socialsharing.shareViaTwitter('Les comparto esto', null, url, function(){
+				shares = $.ajax({
+					url: hostname + 'share/'+fbid,
+					method: 'POST',
+					data:{
+						share: 'share'
+					}
+				});
+
+				shares.done(function(){
+					alert('compartido');
+				});
+			}, function(errormsg){alert(errormsg)});
 		});
 
 		$('div.logro-section').click(function(){
