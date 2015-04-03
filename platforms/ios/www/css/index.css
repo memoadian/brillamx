@@ -84,37 +84,30 @@ ul{
 	float: left;
 	color: #fff;
 	margin-top: 15px;
-	margin-left: 20px;
 	max-width: 175px;
 	font-size: 15px;
 }
 .button-right{
 	display: inline-block;
-	width: 62px;
-	height: 	48px;
+	width: 25%;
+	height: 100%;
 	float: right;
-	margin-right: 10px;
-	margin-top: 3px;
+	margin: 0;
+}
+.edit, .back, .menu{
+	padding: 10px 25px;
+	box-sizing: border-box;
+}
+.actionbar_logo{
+	height: 90%;
+	width: auto;
 }
 .button-left{
 	display: inline-block;
-	width: 30px;
-	height: 30px;
+	width: 25%;
+	height: 100%;
 	float: left;
-	margin-left: 20px;
-	margin-top: 	10px; 
-}
-.back{
-	display: none;
-}
-.edit{
-	width: 30px;
-	height: 30px;
-	text-align: right;
-	float: right;
-	margin-top: 9px;
-	margin-bottom: 10px;
-	display: none;
+	margin: 0;
 }
 
 /* menu */
@@ -576,6 +569,13 @@ label{
 }
 
 /* emprendedores */
+.comparte{
+	margin: 0 !important;
+	padding: 30px !important;
+	color: #fff;
+	font-size: 22px;
+	text-align: center;
+}
 .emprendedores p{
 	margin: 10px 0 0 0;
 	padding: 0 10px 0 0;
@@ -851,6 +851,10 @@ label{
 }
 
 /* new */
+.new{
+	background: #fff;
+	position: relative;
+}
 .new-img{
 	position: relative;
 	z-index: 30;
@@ -867,6 +871,7 @@ label{
 	margin: 0;
 }
 .new-text{
+	background: #fff;
 	margin: 0;
 	padding: 10px 20px;
 	color: #444;
@@ -935,6 +940,7 @@ figure{
 .viewselfie-data{
 	margin: 10px 20px;
 	padding: 10px 0;
+	height: 50px;
 	border-bottom: 1px solid #ddd;
 	border-right: 1px solid #ddd;
 }
@@ -1208,18 +1214,18 @@ video{
 	display: none;
 }
 .video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    padding-top: 30px; height: 0; overflow: hidden;
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 30px; height: 0; overflow: hidden;
 }
 .video-container iframe,
 .video-container object,
 .video-container embed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }
 @media(min-width: 375px){
 	.preselfie-icon{
@@ -1230,6 +1236,34 @@ video{
 		margin: 20px auto;
 	}
 	.preselfie-desc{
+		font-size: 16px;
+	}
+	.button-right{
+		width: 20%;
+	}
+	.button-left{
+		width: 20%;
+	}
+	.edit, .back, .menu{
+		padding: 6px 19px;
+		box-sizing: border-box;
+	}
+	.title {
+		font-size: 16px;
+	}
+}
+@media(min-width: 410px){
+	.button-right{
+		width: 20%;
+	}
+	.button-left{
+		width: 20%;
+	}
+	.edit, .back, .menu{
+		padding: 6px 23px;
+		box-sizing: border-box;
+	}
+	.title {
 		font-size: 16px;
 	}
 }
