@@ -44,12 +44,12 @@ var app = {
 		loadNews(1);
 		openFB.init({appId: '605895716209070'});
 
-		window.alert = function (txt) {
+/*		window.alert = function (txt) {
 			navigator.notification.alert(txt, null, "Brilla México", "Cerrar");
-		}
+		}*/
 
 		//preloads for navigator
-		loadDataFacebook(855665064499720);
+		loadDataFacebook(937277682971405);
 
 		openFB.getLoginStatus(function(loginStatus){
 			if(loginStatus.status === 'unknown'){
@@ -135,7 +135,8 @@ var app = {
 		});
 
 		$('.action').click(function(){
-			action = $(this).data('action');
+			$('.viewselfie-img img').attr('src', '');
+			action = $(this).attr('data-action');
 			redirectAction(action);
 		});
 

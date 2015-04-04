@@ -51,7 +51,7 @@
 	function redirectAction(action){
 		backgroundBody = $('.'+action).data('body');
 		navbarStatus = $('.'+action).data('navbar');
-		title = $('.'+action).data('title');
+		title = $('.'+action).attr('data-title');
 		back = $('.'+action).data('back');
 		backtion = $('.'+action).attr('data-backtion');
 		edit = $('.'+action).attr('data-edit');
@@ -288,7 +288,7 @@
 				$('input[name="biografia"]').val(data.bio);
 				$('input[name="nombre"]').val(data.name);
 
-				if(data.twid != ''){
+				if(data.twid != 0){
 					$('.outputTwitterID').text('Conectado a twitter');
 				}
 
@@ -633,7 +633,8 @@
 			var html = Mustache.to_html(template, data);
 			$('#perfil-data ul').html(html);
 			$('.perfil-name-de').text(data.name);
-			$('.perfilde').attr('data-username', data.name);
+			$('.title').text('Perfil de '+data.name);
+			$('.perfilde').attr('data-title', 'Perfil de '+data.name);
 			$('.perfil-bio').text(data.bio);
 		});
 
@@ -649,7 +650,6 @@
 				});
 				goSelfie();
 			}
-			$('.title').text('Perfil de '+username);
 			tePonesPorQueTePones(photos);
 		});
 
@@ -664,8 +664,9 @@
 	}
 
 	function tePonesPorQueTePones(photos){
-		if( $('.photos-otro').length ){
-			$('.photos-otro').text(photos);
+		if( $('.photos-otro').length > 0 ){
+			console.log(photos);
+			$('.photos-otro').html(photos);
 		}else{
 			setTimeout(function(){
 				tePonesPorQueTePones(photos)

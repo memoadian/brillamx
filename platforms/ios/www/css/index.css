@@ -89,6 +89,7 @@ ul{
 }
 .button-right{
 	display: inline-block;
+	text-align: center;
 	width: 25%;
 	height: 100%;
 	float: right;
@@ -174,6 +175,7 @@ ul{
 .drawermenu li span{
 	margin-top: 3px;
 	display: inline-block;
+	font-size: 13px;
 }
 .drawermenu i{
 	display: inline-block;
@@ -386,13 +388,30 @@ section{
 .un-h{
 	color: #000;
 }
+hr{
+	border: 0;
+	border-bottom: 1px solid #ccc;
+	width: 80%;
+	margin-top: 20px;
+}
+.label-twitter{
+	font-size: 13px;
+	display: block;
+	width: 80%;
+	margin: 0 auto;
+	text-align: justify;
+	color: #777;
+	margin-top: 25px;
+}
 .btn.twitter {
 	display: block;
-	margin: 16px;
-	padding: 8px;
+	width: 80%;
+	margin: 9px auto;
+	padding: 18px 0 0;
 	background: #55ACEE;
 	color: #fff;
 	text-align: center;
+	height: 24px;
 }
 
 /* perfil */
@@ -439,13 +458,13 @@ section{
 	margin-left: -48px;
 }
 .perfil-name, .perfil-name-de{
-	margin-top: 60px;
+	margin-top: 67px;
 	margin-bottom: 0;
 }
 .perfil-status, .perfil-bio{
-	color: #aeaeae;
-	font-size: 14px;
-	margin-top: 5px;
+	color: #777;
+	font-size: 13px;
+	margin-top: 10px;
 }
 .perfil-data, #perfil-data{
 	border-bottom: 1px solid #ccc;
@@ -459,11 +478,13 @@ section{
 	width: 	30%;
 }
 .perfil-data li p, #perfil-data li p{
-	color: #aeaeae;
+	color: #777;
 	margin: 8px 0;
+	font-size: 13px;
 }
 .perfil-data li span, #perfil-data li span{
 	color: #5b026b;
+	font-size: 13px;
 }
 .perfil-photos li, #perfil-photos li{
 	background: url(../img/foto_placeholder.jpg) center no-repeat;
@@ -482,13 +503,17 @@ section{
 .data-right{
 	border-left: 1px solid #5b026b;
 }
+.label-logro{
+	font-size: 13px;
+}
 .logro{
-	width: 25%;
+	width: 23%;
 	padding: 5px;
 	box-sizing: border-box;
 	display: inline-block;
+	margin: 0 4% 10px;
 }
-#logros{
+#logros, #logros-otros{
 	margin-bottom: 15px;
 	border-bottom: 1px solid #ccc
 }
@@ -548,24 +573,28 @@ label{
 	padding: 5px;
 }
 .label-name{
-	margin-top: 60px;
+	margin-top: 75px;
 }
 .input-edit{
 	width: 80%;
 	padding: 5px;
 	border: 0;
-	border-bottom: 1px solid #5b026b;
+	border-bottom: 1px solid #777;
 	margin-bottom: 20px;
+}
+.input-edit:focus{
+	border-bottom: 2px solid #5b026b;
 }
 .save-container{
 	width: 80%;
 	display: inline-block;
 }
 .save{
-	padding: 5px 10px;
+	padding: 10px 12px;
 	background: #b8de00;
 	color: #d82088;
 	float: right;
+	font-weight: bold;
 }
 
 /* emprendedores */
@@ -834,12 +863,16 @@ label{
 	color: #444444;
 	margin: 0;
 	padding: 5px 20px 20px;
+	font-size: 15px;
+	font-weight: bold;
 }
 .news-view-more{
 	float: right;
 	color: #5b026b;
 	margin: 0;
 	padding: 5px 20px 20px;
+	font-size: 15px;
+	font-weight: bold;
 }
 .more-news{
 	color: #da008e;
@@ -863,12 +896,14 @@ label{
 	color: #d32393;
 	padding: 10px 20px;
 	margin: 0;
+	font-size: 14px;
 }
 .new-title{
 	color: #560265;
 	border-bottom: 1px solid #ddd;
-	padding: 10px 20px;
+	padding: 0px 20px 10px 20px;
 	margin: 0;
+	font-size: 18px;
 }
 .new-text{
 	background: #fff;
@@ -942,6 +977,8 @@ figure{
 }
 .viewselfie-img{
 	padding: 20px;
+	width: 280px;
+	height: 280px;
 }
 .viewselfie-data{
 	margin: 10px 20px;
@@ -962,7 +999,7 @@ figure{
 	margin: 5px 0;
 }
 .viewselfie-desc{
-	color: rgb(73, 2, 86);
+	color: #5b026b;
 	margin: 0;
 }
 
@@ -993,18 +1030,18 @@ figure{
 	text-decoration: none;
 	font-size: 14px;
 	color: #555;
-	border: 1px solid rgb(73, 2, 86);
+	border: 1px solid #5b026b;
 	border-left: 0;
 }
 .tabs li.leftab a {
-	border-left: 1px solid rgb(73, 2, 86);
+	border-left: 1px solid #5b026b;
 	border-radius: 5px 0px 0px 5px;
 }
 .tabs li.rightab a {
 	border-radius: 0px 5px 5px 0px;
 }
 .tabs li a.active {
-	background: rgb(73, 2, 86);
+	background: #5b026b;
 	color: #fff;
 }
 
@@ -1071,7 +1108,7 @@ figure{
 }
 #listUsersLeaderboard li p .name {
 	font-size: 20px;
-	color: rgb(73, 2, 86);
+	color: #5b026b;
 	margin: 4px;
 }
 #listUsersLeaderboard li p .points {
@@ -1085,6 +1122,9 @@ figure{
 	font-size: 32px;
 	color: #444;
 	margin: 22px 16px;
+}
+#listUsersLeaderboard li .position:before{
+	content: '#';
 }
 #listUsersLeaderboard li .position: before {
 	content: "#";
@@ -1133,7 +1173,7 @@ figure{
 	height: 16px;
 	text-overflow: hidden;
 	overflow: hidden;
-	color: rgb(73, 2, 86);
+	color: #5b026b;
 	margin: 4px;
 }
 #listUserLeaders li p .points {
@@ -1147,16 +1187,16 @@ figure{
 	background-size: cover;
 	color: #fff;
 	font-size: 12px;
-	height: 10px;
-	width: 10px;
+	height: 18px;
+	width: 18px;
 	text-align: center;
 	font-weight: bold;
 	position: absolute;
-	padding: 4px 3px;
+	padding: 4px 3px 4px 5px;
 	margin-top: 38px;
 	z-index: 10;
 	margin-left: 58px;
-	line-height: 11px;
+	line-height: 20px;
 }
 
 
@@ -1196,8 +1236,8 @@ figure{
 #leaders .name-list{
 	font-size: 12px;
 }
-#leaders .points-list{
-	color: rgb(73, 2, 86);
+.points-list{
+	color: #5b026b;
 	font-size: 12px;
 }
 /* Selfies */

@@ -94,6 +94,7 @@
 		<script id="listlogros" type="text/template">
 			<li class="logro">
 				<img src="img/{{id_string}}.png">
+				<span class="label-logro">{{points_for_achievement}} puntos</span>
 			</li>
 		</script>
 
@@ -291,7 +292,7 @@
 
 		<!-- EDITAR PERFIL -->
 
-		<section class="editar-perfil" data-title="Editar Perfil" data-body="#490256" data-navbar="si" data-drawer="si" data-rightbutton="">
+		<section class="editar-perfil" data-title="Editar Perfil" data-body="#490256" data-navbar="si" data-drawer="si" data-rightbutton="none" data-back="true" data-backtion="perfil">
 			<div class="content">
 				<div class="perfil-ciudad">
 					<img class="foto" src="">
@@ -307,6 +308,8 @@
 				<div class="save-container">
 					<div class="save">Guardar Cambios</div>
 				</div>
+				<hr>
+				<span class="label-twitter">Conecta tu cuenta con twitter</span>
 				<div class="btn twitter outputTwitterID" data-action="linkTwitter">
 					Iniciar sesión con Twitter
 				</div>
@@ -341,7 +344,7 @@
 
 		<!-- ACTIVIDAD -->
 
-		<section class="actividad" data-title="Actividad" data-body="#490256" data-navbar="si" data-drawer="si">
+		<section class="actividad" data-title="Actividad" data-body="#490256" data-navbar="si" data-drawer="si" data-rightbutton="none">
 			<div class="content">
 				<ul class="tabs">
 					<li class="leftab">
@@ -366,39 +369,12 @@
 			</div>
 		</section>
 
-		<!-- NOTICIAS -->
-
-		<section class="noticias" data-title="Noticias" data-body="#490256" data-navbar="si" data-drawer="si">
-			<div class="content">
-				<img class="spin" src="img/spin.png">
-				<ul class="news">
-
-				</ul>
-				<p class="more-news">Más noticias</p>
-			</div>
-		</section>
-
-		<!-- NOTICIA -->
-
-		<section class="noticia" data-title="Noticias" data-body="#490256" data-navbar="si" data-drawer="si">
-			<div class="content">
-				<img class="spin" src="img/spin.png">
-				<div class="new">
-
-				</div>
-			</div>
-			<p class="floated">
-				<img class="facebook" src="img/facebook.png">
-				<img class="twitter" src="img/twitter.png">
-			</p>
-		</section>
-
 		<!-- VER SELFIE -->
 
-		<section class="viewselfie" data-title="#Selfie" data-body="#490256" data-navbar="si" data-drawer="si" data-back="true" data-backtion="perfil">
+		<section class="viewselfie" data-title="#Selfie" data-body="#490256" data-navbar="si" data-drawer="si" data-back="true" data-backtion="perfil" data-rightbutton="none">
 			<div class="content">
 				<div class="viewselfie-img">
-					<img src="">
+					<img src="img/foto_placeholder.jpg">
 				</div>
 				<div class="viewselfie-data">
 					<img class="viewselfie-profile" src="">
@@ -415,7 +391,7 @@
 
 		<!-- VER SELFIE OTRO -->
 
-		<section class="viewselfie-otro" data-title="#Selfie" data-body="#490256" data-navbar="si" data-drawer="si" data-back="true" data-backtion="perfilde">
+		<section class="viewselfie-otro" data-title="#Selfie" data-body="#490256" data-navbar="si" data-drawer="si" data-back="true" data-backtion="perfilde" data-rightbutton="none">
 			<div class="content">
 				<div class="viewselfie-img">
 					<img src="">
@@ -435,7 +411,7 @@
 
 		<!-- VER SELFIE OTRO SINGLE -->
 
-		<section class="viewselfie-otro-single" data-body="#490256" data-navbar="si" data-drawer="si" data-back="true" data-backtion="actividad">
+		<section class="viewselfie-otro-single" data-body="#490256" data-navbar="si" data-drawer="si" data-back="true" data-backtion="actividad" data-rightbutton="none">
 			<div class="content">
 				<div class="viewselfie-img">
 					<img src="">
@@ -453,9 +429,36 @@
 			</p>
 		</section>
 
+		<!-- NOTICIAS -->
+
+		<section class="noticias" data-title="Noticias" data-body="#490256" data-navbar="si" data-drawer="si" data-rightbutton="none">
+			<div class="content">
+				<img class="spin" src="img/spin.png">
+				<ul class="news">
+
+				</ul>
+				<p class="more-news">Más noticias</p>
+			</div>
+		</section>
+
+		<!-- NOTICIA -->
+
+		<section class="noticia" data-title="Noticias" data-body="#490256" data-navbar="si" data-drawer="si" data-back="true" data-backtion="noticias" data-rightbutton="none">
+			<div class="content">
+				<img class="spin" src="img/spin.png">
+				<div class="new">
+
+				</div>
+			</div>
+			<p class="floated">
+				<img class="facebook" src="img/facebook.png">
+				<img class="twitter" src="img/twitter.png">
+			</p>
+		</section>
+
 		<!-- EMPRENDEDORES -->
 
-		<section class="emprendedores" data-body="#490256" data-navbar="si" data-drawer="si" data-title="Emprendedores">
+		<section class="emprendedores" data-body="#490256" data-navbar="si" data-drawer="si" data-title="Emprendedores" data-rightbutton="none">
 			<div class="content">
 				<div class="perfil-ciudad-de">
 					<p class="comparte">Comparte su historia<p>
@@ -483,6 +486,64 @@
 						<p class="emprendedor-more">MÁS INFORMACIÓN...</p>
 					</li>
 				</ul>
+			</div>
+		</section>
+
+		<!-- EMPRENDEDOR 1 -->
+
+		<section class="emprendedor1" data-body="#490256" data-navbar="si" data-drawer="si" data-title="Emprendedores" data-rightbutton="none" data-back="true" data-backtion="emprendedores">
+			<div class="content">
+				<div class="perfil-emp-img">
+					<p class="perfil-emp-name">Jahir Mojica</p>
+					<p class="perfil-emp-emp">Suema</p>
+				</div>
+				<div class="perfil-emp-bio">
+					<p>Jahir Mojica de 28 años es Ingeniero Industrial por la UNAM y actualmente se encuentra cursando una Maestría en Alta Dirección.</p>
+					<div class="video-container">
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/Ie6fX3USUbg" frameborder="0" allowfullscreen></iframe>
+					</div>
+					<p>Fundador y CEO de Sustentabilidad en Energía y Medio Ambiente S.A. de C.V. (SUEMA), empresa creada para dar una solución a la problemática ambiental y combatir el cambio climático.</p>
+					<p>Se dedica al diseño de sistemas híbridos de bioconversión de residuos en energía, además de ofrecer consultorías para mejorar sistemas existentes y todo tipo de equipos para manejo de desechos urbanos.</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- EMPRENDEDOR 2 -->
+
+		<section class="emprendedor2" data-body="#490256" data-navbar="si" data-drawer="si" data-title="Emprendedores" data-rightbutton="none" data-back="true" data-backtion="emprendedores">
+			<div class="content">
+				<div class="perfil-emp-img">
+					<p class="perfil-emp-name">Abraham Chetewy</p>
+					<p class="perfil-emp-emp">Somerset Technologies</p>
+				</div>
+				<div class="perfil-emp-bio">
+					<P>Abraham Chetewy, Licenciado en Administración de Empresas es Socio Fundador y actual Director General de Somerset Technologies S.A. de C.V..</P>
+					<div class="video-container">
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/WlEBo2YOq8U" frameborder="0" allowfullscreen></iframe>
+					</div>
+					<P>Tiene especial interés en el área de energía y medio ambiente, así como en el desarrollo de tecnologías renovables.</P>
+					<P>Ha realizado diversos proyectos relacionados con la eficiencia energética y actualmente contribuye al desarrollo de soluciones de alta ingeniería e innovación tecnológica en la industria de las turbinas eólicas.</P>
+				</div>
+			</div>
+		</section>
+
+		<!-- EMPRENDEDOR 3 -->
+
+		<section class="emprendedor3" data-body="#490256" data-navbar="si" data-drawer="si" data-title="Emprendedores" data-rightbutton="none" data-back="true" data-backtion="emprendedores">
+			<div class="content">
+				<div class="perfil-emp-img">
+					<p class="perfil-emp-name">Franciso Xavier Villaseñor</p>
+					<p class="perfil-emp-emp">Carbón Diversión América<br> Latina</p>
+				</div>
+				<div class="perfil-emp-bio">
+					<p>Panchito</p>
+					<p>El Ingeniero Francisco X. Villaseñor se ha dedicado al estudio e investigación de biocombustibles y biomasas en la última década. Es Fundador y Presidente del consejo de administración de las empresas Carbon Diversion América Latina S.A. de C.V.</p>
+					<div class="video-container">
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/HuT23pQG8gE" frameborder="0" allowfullscreen></iframe>
+					</div>
+					<p>Estudió Ingeniería Civil en la Universidad Autónoma de Guadalajara y actualmente, continua sus estudios cursando la Maestría en Energía Renovable en la misma institución.</p>
+					<p>A la fecha ha desarrollado 4 patentes y solicitado su registro en el IMPI, todas ellas relacionadas con la transformación de materia orgánica en energía renovable.</p>
+				</div>
 			</div>
 		</section>
 
@@ -549,58 +610,6 @@
 				</p>
 				<div class="no action" data-action="salir">NO</div>
 				<div class="si action" data-action="registro1">Si, seguro</div>
-			</div>
-		</section>
-
-		<!-- EMPRENDEDOR 1 -->
-
-		<section class="emprendedor1" data-body="#490256" data-navbar="si" data-drawer="si" data-title="Emprendedores">
-			<div class="content">
-				<div class="perfil-emp-img">
-					<p class="perfil-emp-name">Jahir Mojica</p>
-					<p class="perfil-emp-emp">Suema</p>
-				</div>
-				<div class="perfil-emp-bio">
-					<p>Jahir Mojica de 28 años es Ingeniero Industrial por la UNAM y actualmente se encuentra cursando una Maestría en Alta Dirección.</p>
-					[video]
-					<p>Fundador y CEO de Sustentabilidad en Energía y Medio Ambiente S.A. de C.V. (SUEMA), empresa creada para dar una solución a la problemática ambiental y combatir el cambio climático.</p>
-					<p>Se dedica al diseño de sistemas híbridos de bioconversión de residuos en energía, además de ofrecer consultorías para mejorar sistemas existentes y todo tipo de equipos para manejo de desechos urbanos.</p>
-				</div>
-			</div>
-		</section>
-
-		<!-- EMPRENDEDOR 2 -->
-
-		<section class="emprendedor2" data-body="#490256" data-navbar="si" data-drawer="si" data-title="Emprendedores">
-			<div class="content">
-				<div class="perfil-emp-img">
-					<p class="perfil-emp-name">Abraham Chetewy</p>
-					<p class="perfil-emp-emp">Somerset Technologies</p>
-				</div>
-				<div class="perfil-emp-bio">
-					<P>Abraham Chetewy, Licenciado en Administración de Empresas es Socio Fundador y actual Director General de Somerset Technologies S.A. de C.V..</P>
-					[video]
-					<P>Tiene especial interés en el área de energía y medio ambiente, así como en el desarrollo de tecnologías renovables.</P>
-					<P>Ha realizado diversos proyectos relacionados con la eficiencia energética y actualmente contribuye al desarrollo de soluciones de alta ingeniería e innovación tecnológica en la industria de las turbinas eólicas.</P>
-				</div>
-			</div>
-		</section>
-
-		<!-- EMPRENDEDOR 3 -->
-
-		<section class="emprendedor3" data-body="#490256" data-navbar="si" data-drawer="si" data-title="Emprendedores">
-			<div class="content">
-				<div class="perfil-emp-img">
-					<p class="perfil-emp-name">Franciso Xavier Villaseñor</p>
-					<p class="perfil-emp-emp">Carbón Diversión América<br> Latina</p>
-				</div>
-				<div class="perfil-emp-bio">
-					<p>Panchito</p>
-					<p>El Ingeniero Francisco X. Villaseñor se ha dedicado al estudio e investigación de biocombustibles y biomasas en la última década. Es Fundador y Presidente del consejo de administración de las empresas Carbon Diversion América Latina S.A. de C.V.</p>
-					[video]
-					<p>Estudió Ingeniería Civil en la Universidad Autónoma de Guadalajara y actualmente, continua sus estudios cursando la Maestría en Energía Renovable en la misma institución.</p>
-					<p>A la fecha ha desarrollado 4 patentes y solicitado su registro en el IMPI, todas ellas relacionadas con la transformación de materia orgánica en energía renovable.</p>
-				</div>
 			</div>
 		</section>
 
