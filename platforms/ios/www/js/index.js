@@ -37,31 +37,31 @@ var app = {
 	},
 	// Update DOM on a Received Event
 	receivedEvent: function(id) {
+		FastClick.attach(document.body);
 
 		var newsPage = 2;
 		var hostname = 'http://api.brillamexico.org/';
-		FastClick.attach(document.body);
 		loadNews(1);
 		openFB.init({appId: '605895716209070'});
 
-/*		window.alert = function (txt) {
+		window.alert = function (txt) {
 			navigator.notification.alert(txt, null, "Brilla México", "Cerrar");
-		}*/
+		}
 
 		//preloads for navigator
-		loadDataFacebook(937277682971405);
+		//loadDataFacebook(10206888819925764);
 
 		openFB.getLoginStatus(function(loginStatus){
 			if(loginStatus.status === 'unknown'){
-				index = 'perfil';
+				var index = 'registro1';
 				redirectAction(index);
 			}else{
-				index = 'perfil';
+				var index = 'perfil';
 				redirectAction(index);
 			}
 		});
 
-	/*//Configs twitter
+		//Configs twitter
 		var APP_KEY = "GmdbD9T3jaf5fcC2Bfc1R6YqmZM";
 		 
 		// COnfiguramos Oauth
@@ -96,7 +96,7 @@ var app = {
 					});
 				});
 			});
-		}*/
+		}
 
 		height = $(window).height();
 
@@ -274,8 +274,9 @@ var app = {
 			}, function(errormsg){alert(errormsg)});
 		});
 
-		$('div.logro-section').click(function(){
+		$('div.logro-section').on('click touchend', function(){
 			$(this).css({
+				display: 'none',
 				zIndex: -200,
 			});
 		});

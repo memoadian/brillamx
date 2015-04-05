@@ -1,6 +1,6 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
-/*    {
+    {
         "file": "plugins/org.apache.cordova.camera/www/CameraConstants.js",
         "id": "org.apache.cordova.camera.Camera",
         "clobbers": [
@@ -230,12 +230,12 @@ module.exports = [
             "navigator.notification",
             "navigator"
         ]
-    }*/
+    }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
-/*    "org.apache.cordova.camera": "0.3.6",
+    "org.apache.cordova.camera": "0.3.6",
     "org.apache.cordova.file": "1.3.3",
     "org.apache.cordova.file-transfer": "0.5.0",
     "org.apache.cordova.inappbrowser": "0.6.0",
@@ -243,7 +243,7 @@ module.exports.metadata =
     "nl.x-services.plugins.socialsharing": "4.3.15",
     "com.oauthio.plugins.oauthio": "0.2.4",
     "org.apache.cordova.dialogs": "0.3.0",
-    "org.apache.cordova.vibration": "0.3.13"*/
+    "org.apache.cordova.vibration": "0.3.13"
 }
 // BOTTOM OF METADATA
 });

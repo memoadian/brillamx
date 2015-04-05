@@ -358,7 +358,7 @@
 				addLogroRegistro(fbid);
 				fillPerfil(fbid);
 				getActivity();
-				redirectAction('perfil');
+				redirectAction('registro-foto');
 			});
 		});
 	}
@@ -393,6 +393,7 @@
 
 				add.done(function(){
 					$('#nuevo-usuario').css({
+						display: 'block',
 						zIndex: 200,
 					});
 					loadDataFacebook(fbid);
@@ -437,6 +438,7 @@
 
 							add.done(function(){
 								$('#super-comprometido').css({
+									display: 'block',
 									zIndex: 200,
 								});
 								loadDataFacebook(fbid);
@@ -464,6 +466,7 @@
 
 						add.done(function(){
 							$('#don-compromisos').css({
+								display: 'block',
 								zIndex: 200,
 							});
 							loadDataFacebook(fbid);
@@ -500,6 +503,7 @@
 
 				add.done(function(){
 					$('#amante-twitter').css({
+						display: 'block',
 						zIndex: 200,
 					});
 					loadDataFacebook(fbid);
@@ -535,6 +539,7 @@
 
 					add.done(function(){
 						$('#viralizador').css({
+							display: 'block',
 							zIndex: 200,
 						});
 						loadDataFacebook(fbid);
@@ -570,6 +575,7 @@
 
 				add.done(function(){
 					$('#perfil-completo').css({
+						display: 'block',
 						zIndex: 200,
 					});
 					loadDataFacebook(fbid);
@@ -649,8 +655,8 @@
 					$('#selfies-list').append(html);
 				});
 				goSelfie();
+				tePonesPorQueTePones(photos);
 			}
-			tePonesPorQueTePones(photos);
 		});
 
 		$.getJSON(hostname + '/user/'+userFbid, function(data) {
@@ -664,9 +670,11 @@
 	}
 
 	function tePonesPorQueTePones(photos){
-		if( $('.photos-otro').length > 0 ){
-			console.log(photos);
-			$('.photos-otro').html(photos);
+		photos = parseInt(photos);
+		text =  parseInt($('.photos-otro').text());
+		$('.photos-otro').text(photos);
+		if( text == photos ){
+
 		}else{
 			setTimeout(function(){
 				tePonesPorQueTePones(photos)
@@ -681,7 +689,7 @@
 		});
 
 		Delete.done(function( data ){
-			alert(data.status);
+			alert('Has borrado tu cuenta con éxito');
 		});
 	}
 
