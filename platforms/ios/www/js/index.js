@@ -141,6 +141,8 @@ var app = {
 		});
 
 		$('.action-fieldaction').click(function(){
+			fieldaction = $(this).attr('data-fieldaction');
+			$('.registro3').attr('data-fieldelected', fieldaction);
 			action = $(this).data('action');
 			redirectAction(action);
 		});
