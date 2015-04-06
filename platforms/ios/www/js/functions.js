@@ -58,15 +58,7 @@
 		rightbutton = $('.'+action).attr('data-rightbutton');
 
 		$('.title').text(title);
-
-		if(action != 'perfil'){
-			$('section').hide();
-		}else{
-			$('section').css({
-				visibility: 'hidden'
-			});
-		}
-
+		$('section').hide();
 		$('.'+action).fadeIn();
 		$('.'+action).css({
 			visibility: 'visible',
@@ -262,7 +254,8 @@
 		TEMPLATES
 	*********************************************/
 
-	function loadDataFacebook(fbid){
+	function loadDataFacebook(fbid, register){
+		register = typeof register !== 'undefined' ? register : false;
 		var load = $.ajax({
 			url: hostname + '/user/'+fbid,
 			method: 'GET',
@@ -306,7 +299,11 @@
 				addLogroRegistro(fbid);
 				getActivity();
 				fillPerfil(fbid);
-				redirectAction('perfil');
+				if(register === false){
+					redirectAction('perfil');
+				}else{
+					redirectAction('registro-foto');
+				}
 			}
 		});
 	}
@@ -349,16 +346,19 @@
 
 				if(fieldaction_id == 1){
 					$('.camera-button').attr('data-action', 'preselfie-jovenes');
+					$('.camera.registrate.action').attr('data-action', 'preselfie-jovenes');
 				}else if(fieldaction_id == 2){
 					$('.camera-button').attr('data-action', 'preselfie-emprendedores');
+					$('.camera.registrate.action').attr('data-action', 'preselfie-emprendedores');
 				}else{
 					$('.camera-button').attr('data-action', 'preselfie-empresarios');
+					$('.camera.registrate.action').attr('data-action', 'preselfie-empresarios');
 				}
 
 				addLogroRegistro(fbid);
 				fillPerfil(fbid);
 				getActivity();
-				redirectAction('registro-foto');
+				loadDataFacebook(fbid, true);
 			});
 		});
 	}
@@ -396,7 +396,7 @@
 						display: 'block',
 						zIndex: 200,
 					});
-					loadDataFacebook(fbid);
+					loadDataFacebook(fbid, true);
 				});
 			}
 		});

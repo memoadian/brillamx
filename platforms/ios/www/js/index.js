@@ -39,6 +39,31 @@ var app = {
 	receivedEvent: function(id) {
 		FastClick.attach(document.body);
 
+		/********************************************
+			SWIPER SLIDER
+		*********************************************/
+		var mySwiper1 = new Swiper ('.swiper-container1', {
+			direction: 'horizontal',
+			loop: true,
+			pagination: '.swiper-pagination1',
+		});
+
+		var mySwiper2 = new Swiper ('.swiper-container2', {
+			direction: 'horizontal',
+			loop: true,
+			pagination: '.swiper-pagination2',
+		});
+
+		var mySwiper3 = new Swiper ('.swiper-container3', {
+			direction: 'horizontal',
+			loop: true,
+			pagination: '.swiper-pagination3',
+		});
+
+		/********************************************
+			Iniciadores
+		*********************************************/
+
 		var newsPage = 2;
 		var hostname = 'http://api.brillamexico.org/';
 		loadNews(1);
@@ -103,27 +128,6 @@ var app = {
 		$('.content, .content2').height(height - 72);
 		$('.content-trans').height(height);
 		$('.drawercontent').height(height);
-
-		/********************************************
-			SWIPER SLIDER
-		*********************************************/
-		var mySwiper1 = new Swiper ('.swiper-container1', {
-			direction: 'horizontal',
-			loop: true,
-			pagination: '.swiper-pagination1',
-		});
-
-		var mySwiper2 = new Swiper ('.swiper-container2', {
-			direction: 'horizontal',
-			loop: true,
-			pagination: '.swiper-pagination2',
-		});
-
-		var mySwiper3 = new Swiper ('.swiper-container3', {
-			direction: 'horizontal',
-			loop: true,
-			pagination: '.swiper-pagination3',
-		});
 
 		/********************************************
 			ACTIONS
@@ -196,7 +200,7 @@ var app = {
 			$(this).text('Conectando...');
 			setTimeout(function(){
 				$('.logIn').text('Iniciar Sesión con Facebook');
-			}, 3000);
+			}, 20000);
 			login();
 		});
 
