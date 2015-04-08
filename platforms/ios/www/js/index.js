@@ -242,10 +242,15 @@ var app = {
 			takePicture();
 		});
 
-		$('.facebook').click(function(){
+		$('.new-share').click(function(){
 			var fbid = $('.drawermenu').attr('data-fbid');
 			var url = $(this).attr('data-url');
-			window.plugins.socialsharing.shareViaFacebook('Les comparto esto', null, url, function(){
+			window.plugins.socialsharing.share(
+			'',
+			'',
+			null,
+			url,
+			function(msg){
 				shares = $.ajax({
 					url: hostname + 'user/share/'+fbid,
 					method: 'POST',
@@ -258,26 +263,10 @@ var app = {
 					alert('¡Gracias por Compartir!');
 					addLogroShare(fbid);
 				});
-			}, function(errormsg){alert(errormsg)});
-		});
-
-		$('.twitter').click(function(){
-			var fbid = $('.drawermenu').attr('data-fbid');
-			var url = $(this).attr('data-url');
-			window.plugins.socialsharing.shareViaTwitter('Les comparto esto', null, url, function(){
-				shares = $.ajax({
-					url: hostname + 'user/share/'+fbid,
-					method: 'POST',
-					data:{
-						share: 'share'
-					}
-				});
-
-				shares.done(function(){
-					alert('¡Gracias por Compartir!');
-					addLogroShare(fbid);
-				});
-			}, function(errormsg){alert(errormsg)});
+			},
+			function(msg){
+				alert('Ha ocurrido un error al compartir')
+			});
 		});
 
 		$('div.logro-section').on('click touchend', function(){
@@ -289,7 +278,7 @@ var app = {
 
 		$('.viewselfie-share').click(function(){
 			var url = $(this).attr('data-url');
-			window.plugins.socialsharing.share('Les comparto esto', null, null, url);
+			window.plugins.socialsharing.share('', null, null, url);
 		});
 
 		$('.more-news').click(function(){
@@ -316,7 +305,6 @@ var app = {
 		Hammer(document.body).on('panleft', function(e){
 			drawer = $('section:visible').data('drawer');
 			if(drawer == 'si' && e.direction == 2){
-				var left = $('.drawermenu').css('margin-left').replace('px', '');
 				$('.drawermenu').css({
 					marginLeft: '-=4',
 				});

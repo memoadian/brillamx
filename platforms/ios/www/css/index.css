@@ -239,6 +239,21 @@ section{
 	color: #5b026b;
 	margin: 20px auto 0;
 }
+.registrate-foto{
+	width: 60%;
+	padding: 5px;
+	color: #a3a3a3;
+	margin: 20px auto 0;
+}
+.comprometete{
+	color: #5b026b;
+	font-size: 20px;
+	margin: 5px 0
+}
+.retos{
+	color: #6E6E6E;
+	line-height: 1.5;
+}
 .account{
 	color: #5b026b;
 	border-bottom: 1px solid #5b026b;
@@ -412,7 +427,7 @@ hr{
 	display: block;
 	width: 80%;
 	margin: 9px auto;
-	padding: 18px 0 0;
+	padding: 10px;
 	background: #55ACEE;
 	color: #fff;
 	text-align: center;
@@ -512,7 +527,7 @@ hr{
 	font-size: 13px;
 }
 .logro{
-	width: 23%;
+	width: 25%;
 	padding: 5px;
 	box-sizing: border-box;
 	display: inline-block;

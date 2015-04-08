@@ -265,7 +265,7 @@
 		load.done(function( data ){
 			if(data.error){
 				alert('Esta cuenta no existe');
-				redirectAction('registro1');
+				redirectAction('registro2');
 			}else{
 				foto = 'http://graph.facebook.com/'+fbid+'/picture?type=large';
 				$('.foto').attr('src', foto);
@@ -748,8 +748,7 @@
 	function loadNew(newId){
 		$('.new').empty();
 		$.getJSON(hostname + 'wordpress/nota/' + newId, function(data) {
-			$('.facebook').attr('data-url', 'http://brillamexico.org/?p='+data.id);
-			$('.twitter').attr('data-url', 'http://brillamexico.org/?p='+data.id);
+			$('.new-share').attr('data-url', 'http://brillamexico.org/?p='+data.id);
 			var template = $('#new').html();
 			var html = Mustache.to_html(template, data);
 			$('.new').html(html);
